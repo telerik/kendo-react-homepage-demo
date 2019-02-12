@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkDown from 'react-markdown';
 import {
     Chart,
     ChartLegend,
@@ -8,27 +9,26 @@ import {
     ChartTooltip,
     ChartTitle
 } from '@progress/kendo-react-charts';
-import ReactMarkDown from 'react-markdown';
-export default class DetailComponent extends React.Component {
+
+export class DetailComponent extends React.Component {
     render() {
         const dataItem = this.props.dataItem;
-        const data = this.props.makeChartData(dataItem.node.labels.edges)
+        const data = this.props.makeChartData(dataItem.node.labels.edges);
+
         const defaultTooltipRender = (item) => {
             if (item.point) {
                 return (`${item.point.category} : ${item.point.value}`)
             }
             return ""
-
         };
+
         return (
-            <div style={{backgroundColor: "white", paddingLeft: 50}}>
-                <div className="row">
-                    <h4><strong>Author:</strong> {dataItem.node.author.login}</h4>
-                </div>
-                <div className="row">
-                    <div className="col-3">
-                        <Chart>
-                            <ChartTitle text="Issue type Chart" color="black" position='bottom' font="19pt sans-serif"/>
+            <div style={{ padding: 0 }}>
+                <div className="row" style={{ height: 300 }}>
+                    <div className="col-2" >
+                        <h4><strong>Author:</strong> {dataItem.node.author.login}</h4>
+                        <Chart style={{ width: '100%', height: 250 }}>
+                            <ChartTitle text="Issue labels" color="black" position='bottom' font="19pt sans-serif" />
                             <ChartTooltip render={defaultTooltipRender} />
                             <ChartSeries>
                                 <ChartSeriesItem type="pie" data={data} categoryField="labelName" field="occurrence">
@@ -38,9 +38,9 @@ export default class DetailComponent extends React.Component {
                             <ChartLegend visible={false} />
                         </Chart>
                     </div>
-                    <div className="col-6">
+                    <div className="col-10 issue-description" style={{ overflowY: 'scroll', height: '100%' }}>
                         <h4>Description</h4>
-                        <ReactMarkDown source={dataItem.node.body}/>
+                        <ReactMarkDown source={dataItem.node.body} />
                     </div>
                 </div>
             </div>

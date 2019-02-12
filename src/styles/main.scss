@@ -1,0 +1,76 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid";
+
+@import "~@progress/kendo-theme-material/scss/variables";
+@import "~@progress/kendo-theme-material/scss/dataviz";
+@import "~@progress/kendo-theme-material/scss/tabstrip";
+@import "~@progress/kendo-theme-material/scss/grid";
+
+.img-circle {
+  border: 1px solid $accent;
+  border-radius: 2rem;
+  margin-right: 0.5rem;
+}
+
+.k-grid {
+  p {
+    margin-bottom: 0;
+  }
+  .k-hierarchy-cell,
+  .k-detail-cell {
+    background: white !important;
+  }
+
+  .k-detail-cell {
+    padding-left: 0 !important;
+  }
+  .assign-to-container {
+    margin: 0.25rem 0;
+  }
+
+  .issue-description {
+    background:
+      /* Shadow covers */ linear-gradient(white 30%, rgba(255, 255, 255, 0)),
+      linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
+      /* Shadows */ radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
+      radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+
+    /* Opera doesn't support this in the shorthand */
+    background-attachment: local, local, scroll, scroll;
+  }
+}
+
+.demo-heading {
+  position: absolute;
+  font-family: "Metric";
+  color: $accent;
+}
+
+.k-i-loading {
+  min-height: 400px;
+  width: 100%;
+}
+
+.k-tabstrip {
+  position: relative;
+
+  .k-tabstrip-items {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .k-content {
+    padding: 0;
+  }
+
+  .k-animation-container {
+    display: block;
+    widows: 100%;
+  }
+}
