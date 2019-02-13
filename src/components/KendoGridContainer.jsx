@@ -21,6 +21,7 @@ export class KendoGridContainer extends React.Component {
     }
     allLabels = [];
     uniqueLabels = [];
+    initialLoad = true;
     expandChange = (event) => {
         event.dataItem.expanded = !event.dataItem.expanded;
         this.forceUpdate();
@@ -28,28 +29,33 @@ export class KendoGridContainer extends React.Component {
 
     getOccurrence = (array, value) => {
         var count = 0;
-        array.forEach((v) => (v === value && count++));
+        array.forEach((v) => (v.name === value.name && count++));
         return count;
     }
 
     makeChartData = (currentLabels) => {
         let data = []
         let currentLabelsParse = currentLabels.map(item => {
-            item = item.node.name
+            item.name = item.node.name
+            item.color = item.node.color
             return item
         })
+
         this.uniqueLabels.forEach((item) => {
             let occurrence = this.getOccurrence(this.allLabels, item)
-            if (currentLabelsParse.indexOf(item) >= 0) {
+            let index = currentLabelsParse.map((e) => { return e.name }).indexOf(item.name);
+            if (index >= 0) {
                 data.push({
                     occurrence: occurrence,
-                    labelName: item,
+                    color: item.color,
+                    labelName: item.name,
                     explode: true
                 })
             } else {
                 data.push({
                     occurrence: occurrence,
-                    labelName: item
+                    color: item.color,
+                    labelName: item.name
                 })
             }
         })
@@ -77,15 +83,26 @@ export class KendoGridContainer extends React.Component {
                         }
                         this.allLabels = [];
 
-                        gridData.map(item => {
+                        gridData.map((item,index) => {
+                            if(this.initialLoad){
+                                index === 0 ? item.expanded = true : item.expanded = false
+                                this.initialLoad = false
+                            }
                             item.node.createdAt = new Date(item.node.createdAt)
                             item.node.labels.edges.forEach(item => {
-                                this.allLabels.push(item.node.name)
+                                this.allLabels.push({
+                                    name: item.node.name,
+                                    color: "#"+item.node.color
+                                })
                             })
                             return item;
                         });
-
-                        this.uniqueLabels = this.allLabels.filter((item, i, ar) => { return ar.indexOf(item) === i; });
+                        this.uniqueLabels = this.allLabels.filter((item, i, ar) => {
+                            let index = ar.map((e) => { return e.name }).indexOf(item.name);
+                            if(index === i) {
+                                return item
+                            }
+                         });
 
                         return (
                             <React.Fragment>

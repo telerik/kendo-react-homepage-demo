@@ -31,8 +31,8 @@ export class DetailComponent extends React.Component {
                             <ChartTitle text="Issue labels" color="black" position='bottom' font="19pt sans-serif" />
                             <ChartTooltip render={defaultTooltipRender} />
                             <ChartSeries>
-                                <ChartSeriesItem type="pie" data={data} categoryField="labelName" field="occurrence">
-                                    <ChartSeriesLabels color="#fff" background="none" visible={false} />
+                                <ChartSeriesItem type="pie" data={data} categoryField="labelName" field="occurrence" colorField="color">
+                                    <ChartSeriesLabels color="black" background="none" visible={false} />
                                 </ChartSeriesItem>
                             </ChartSeries>
                             <ChartLegend visible={false} />

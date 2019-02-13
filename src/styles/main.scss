@@ -47,9 +47,11 @@
 }
 
 .demo-heading {
-  position: absolute;
+  // position: absolute;
   font-family: "Metric";
   color: $accent;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .k-i-loading {
@@ -62,7 +64,6 @@
 
   .k-tabstrip-items {
     display: flex;
-    justify-content: flex-end;
   }
 
   .k-content {
