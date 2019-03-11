@@ -24,7 +24,8 @@ query {
             labels(first:5) {
               edges {
                 node {
-                  name
+                  name,
+                  color
                 }
               }
             }
@@ -59,6 +60,7 @@ query {
               edges {
                 node {
                   name
+                  color
                 }
               }
             }
