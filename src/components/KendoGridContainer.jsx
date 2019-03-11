@@ -83,8 +83,8 @@ export class KendoGridContainer extends React.Component {
                         }
                         this.allLabels = [];
 
-                        gridData.map((item,index) => {
-                            if(this.initialLoad){
+                        gridData.map((item, index) => {
+                            if (this.initialLoad) {
                                 index === 0 ? item.expanded = true : item.expanded = false
                                 this.initialLoad = false
                             }
@@ -92,17 +92,16 @@ export class KendoGridContainer extends React.Component {
                             item.node.labels.edges.forEach(item => {
                                 this.allLabels.push({
                                     name: item.node.name,
-                                    color: "#"+item.node.color
+                                    color: "#" + item.node.color
                                 })
                             })
                             return item;
                         });
                         this.uniqueLabels = this.allLabels.filter((item, i, ar) => {
-                            let index = ar.map((e) => { return e.name }).indexOf(item.name);
-                            if(index === i) {
-                                return item
-                            }
-                         });
+                            let index = ar.map((e) => e.name).indexOf(item.name);
+
+                            return index === i;
+                        });
 
                         return (
                             <React.Fragment>
@@ -114,7 +113,7 @@ export class KendoGridContainer extends React.Component {
                                     onDataStateChange={(e) => { this.setState(e.data); }}
                                     expandField="expanded"
                                     onExpandChange={this.expandChange}
-                                    style={{ height: 600 }}
+                                    style={{ height: '100%', overflow: 'auto', paddingBottom: 57 }}
                                     detail={(props) => <DetailComponent {...props} makeChartData={this.makeChartData} />}
                                 >
                                     <GridColumn field="node.number" title="ID" width={100} />

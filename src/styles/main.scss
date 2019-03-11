@@ -9,10 +9,20 @@
 @import "~@progress/kendo-theme-material/scss/tabstrip";
 @import "~@progress/kendo-theme-material/scss/grid";
 
+html,
+body {
+  height: 100vh;
+  width: 100%;
+}
+
 .img-circle {
   border: 1px solid $accent;
   border-radius: 2rem;
   margin-right: 0.5rem;
+}
+
+#root {
+  height: 100%;
 }
 
 .k-grid {
@@ -32,7 +42,6 @@
   }
 
   .issue-description {
-
     background-repeat: no-repeat;
     background-color: white;
     background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
@@ -40,6 +49,23 @@
     /* Opera doesn't support this in the shorthand */
     background-attachment: local, local, scroll, scroll;
   }
+
+  .k-grid-container {
+    // max-height: 490px;
+  }
+
+  .k-grid-pager {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+.k-animation-container,
+.k-child-animation-container,
+div[role="tabpanel"],
+div[role="tabpanel"] > div {
+  height: 100%;
 }
 
 .demo-heading {
@@ -58,6 +84,7 @@
 }
 
 .k-tabstrip {
+  height: 100%;
   position: relative;
 
   .k-tabstrip-items {
