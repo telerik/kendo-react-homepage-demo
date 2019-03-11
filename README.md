@@ -1,1 +1,0 @@
-# kendo-react-issues-grids
