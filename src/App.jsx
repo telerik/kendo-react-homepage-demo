@@ -4,16 +4,12 @@ import ApolloClient from "apollo-boost";
 import { KendoGridContainer } from "./components/KendoGridContainer";
 import { TabStrip, TabStripTab } from '@progress/kendo-react-layout';
 
-const FIRST = '45d4fb1c20';
-const SECOND = 'd4899858acd89f0';
-const THIRD = '8b673fdefda51d2';
-
 const client = new ApolloClient({
   uri: "https://api.github.com/graphql",
   request: operation => {
     operation.setContext({
       headers: {
-        Authorization: `bearer ${FIRST}${SECOND}${THIRD}`
+        Authorization: `bearer ${process.env.REACT_APP_API_KEY}`
       }
     });
   }
