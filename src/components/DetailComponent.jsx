@@ -10,6 +10,8 @@ import {
     ChartTitle
 } from '@progress/kendo-react-charts';
 
+import 'hammerjs';
+
 export class DetailComponent extends React.Component {
     render() {
         const dataItem = this.props.dataItem;
@@ -27,7 +29,7 @@ export class DetailComponent extends React.Component {
                 <div className="row" style={{ height: 300 }}>
                     <div className="col-2" >
                         <h4><strong>Author:</strong> {dataItem.node.author.login}</h4>
-                        <Chart style={{ width: '100%', height: 250 }}>
+                        <Chart style={{ width: '100%', height: 250 }} transitions={false}>
                             <ChartTitle text="Issue labels" color="black" position='bottom' font="19pt sans-serif" />
                             <ChartTooltip render={defaultTooltipRender} />
                             <ChartSeries>
