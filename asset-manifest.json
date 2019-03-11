@@ -1,13 +1,13 @@
 {
   "main.css": "/kendo-react-homepage-demo/static/css/main.d07c8dc1.chunk.css",
-  "main.js": "/kendo-react-homepage-demo/static/js/main.7e932abc.chunk.js",
-  "main.js.map": "/kendo-react-homepage-demo/static/js/main.7e932abc.chunk.js.map",
-  "static/js/1.e9671acc.chunk.js": "/kendo-react-homepage-demo/static/js/1.e9671acc.chunk.js",
-  "static/js/1.e9671acc.chunk.js.map": "/kendo-react-homepage-demo/static/js/1.e9671acc.chunk.js.map",
+  "main.js": "/kendo-react-homepage-demo/static/js/main.ac7857ae.chunk.js",
+  "main.js.map": "/kendo-react-homepage-demo/static/js/main.ac7857ae.chunk.js.map",
+  "static/js/1.1a6dddf7.chunk.js": "/kendo-react-homepage-demo/static/js/1.1a6dddf7.chunk.js",
+  "static/js/1.1a6dddf7.chunk.js.map": "/kendo-react-homepage-demo/static/js/1.1a6dddf7.chunk.js.map",
   "runtime~main.js": "/kendo-react-homepage-demo/static/js/runtime~main.963b9a10.js",
   "runtime~main.js.map": "/kendo-react-homepage-demo/static/js/runtime~main.963b9a10.js.map",
   "static/css/main.d07c8dc1.chunk.css.map": "/kendo-react-homepage-demo/static/css/main.d07c8dc1.chunk.css.map",
   "index.html": "/kendo-react-homepage-demo/index.html",
-  "precache-manifest.e98d0d8dbe5805b66683af2b63a5ce68.js": "/kendo-react-homepage-demo/precache-manifest.e98d0d8dbe5805b66683af2b63a5ce68.js",
+  "precache-manifest.e3d0d06465c230985754483952054e5d.js": "/kendo-react-homepage-demo/precache-manifest.e3d0d06465c230985754483952054e5d.js",
   "service-worker.js": "/kendo-react-homepage-demo/service-worker.js"
 }
