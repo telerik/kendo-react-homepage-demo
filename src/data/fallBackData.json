@@ -5,33 +5,6 @@
         "edges": [
           {
             "node": {
-              "title": "NumericTextBox currency format is cumbersome to edit",
-              "state": "OPEN",
-              "number": 120,
-              "body": "## I'm submitting a...\r\n* Suggestion for improvement\r\n\r\n## Current behavior\r\nDeleting the existing value to type a new one doesn't behave as expected. It replaces the values with 0 instead of allowing space for new numbers.\r\n\r\n## Expected behavior\r\nPressing backspace or delete in the text box should delete the value. Formatting and validation should be applied on blur instead of on change.\r\n\r\n## Minimal reproduction of the problem with instructions\r\nhttps://stackblitz.com/edit/react-6tetzy\r\n\r\n**NumericTextBox:**\r\n1. Try to change the cents from 53 to 10 by pressing backspace. The cents becomes 00, and then it will add 10 to the start of the 00 making it $101.1000 which doesn't make sense.\r\n2. Try to change the entire value to $95 flat by pressing backspace to remove the existing value. The total value becomes $0.00, and 95 will be added to the start making it $950. If you press backspace all the way to the $ sign it replaces the first digit with 9, but this is counter to user expectation for textboxes.\r\n\r\n**Standard HTML input:**\r\n1. Try to change the cents from 53 to 10 by pressing backspace. The cents will be cleared and the new value can be entered normally.\r\n2. Try to change the entire value to $95 flat by pressing backspace to remove the existing value. The total value will be cleared and become blank, and the new value can be added normally.\r\n\r\n## What is the motivation or use case for changing the behavior?\r\nWe have a lot of money type textboxes in our app, which are adjusted and edited frequently. It's also an international app and we really like Kendo UI's globalisation features and would like to use them but the Numeric Text Box is a bit difficult to use on a frequent basis.\r\n\r\nBrowser:\r\n- Chrome (desktop) version 70.0.3538.77 (Official Build) (64-bit)\r\n\r\nSystem:\r\n- Platform: Windows",
-              "createdAt": "2018-11-09T00:19:26Z",
-              "author": {
-                "login": "GeoMarkou",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/12272970?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/telerik/kendo-react/issues/120",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "discussion",
-                      "color": "c300ef"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
               "title": "IE11 clicking on Multiselect does not always open dropdown list",
               "state": "CLOSED",
               "number": 121,
