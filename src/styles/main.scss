@@ -76,7 +76,7 @@ div[role="tabpanel"] > div {
   color: $accent;
   display: flex;
   position: absolute;
-  right: 1rem;
+  left: 1rem;
   justify-content: flex-end;
 }
 
@@ -91,6 +91,7 @@ div[role="tabpanel"] > div {
 
   .k-tabstrip-items {
     display: flex;
+    justify-content: flex-end;
   }
 
   .k-content {
