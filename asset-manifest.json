@@ -1,7 +1,7 @@
 {
   "main.css": "/kendo-react-homepage-demo/static/css/main.2f102ab2.chunk.css",
-  "main.js": "/kendo-react-homepage-demo/static/js/main.75290d60.chunk.js",
-  "main.js.map": "/kendo-react-homepage-demo/static/js/main.75290d60.chunk.js.map",
+  "main.js": "/kendo-react-homepage-demo/static/js/main.da40b0bf.chunk.js",
+  "main.js.map": "/kendo-react-homepage-demo/static/js/main.da40b0bf.chunk.js.map",
   "static/js/1.0f02a906.chunk.js": "/kendo-react-homepage-demo/static/js/1.0f02a906.chunk.js",
   "static/js/1.0f02a906.chunk.js.map": "/kendo-react-homepage-demo/static/js/1.0f02a906.chunk.js.map",
   "runtime~main.js": "/kendo-react-homepage-demo/static/js/runtime~main.963b9a10.js",
@@ -9,6 +9,6 @@
   "static/media/main.scss": "/kendo-react-homepage-demo/static/media/Metric-Bold.e6f3e585.otf",
   "static/css/main.2f102ab2.chunk.css.map": "/kendo-react-homepage-demo/static/css/main.2f102ab2.chunk.css.map",
   "index.html": "/kendo-react-homepage-demo/index.html",
-  "precache-manifest.ea81d316fcf492687486bdbaec4ef1a4.js": "/kendo-react-homepage-demo/precache-manifest.ea81d316fcf492687486bdbaec4ef1a4.js",
+  "precache-manifest.ab9bef166fd40447912f556b0a4bf24b.js": "/kendo-react-homepage-demo/precache-manifest.ab9bef166fd40447912f556b0a4bf24b.js",
   "service-worker.js": "/kendo-react-homepage-demo/service-worker.js"
 }

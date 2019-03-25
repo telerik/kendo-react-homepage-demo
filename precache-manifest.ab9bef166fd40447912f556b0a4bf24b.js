@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/kendo-react-homepage-demo/static/js/runtime~main.963b9a10.js"
   },
   {
-    "revision": "75290d605e56759db454",
-    "url": "/kendo-react-homepage-demo/static/js/main.75290d60.chunk.js"
+    "revision": "da40b0bf446750500357",
+    "url": "/kendo-react-homepage-demo/static/js/main.da40b0bf.chunk.js"
   },
   {
     "revision": "0f02a906ec43cc857f44",
     "url": "/kendo-react-homepage-demo/static/js/1.0f02a906.chunk.js"
   },
   {
-    "revision": "75290d605e56759db454",
+    "revision": "da40b0bf446750500357",
     "url": "/kendo-react-homepage-demo/static/css/main.2f102ab2.chunk.css"
   },
   {
-    "revision": "42c13679540767a48e488be8c62cd677",
+    "revision": "491ad2f0ab7f48e28b74462390673e53",
     "url": "/kendo-react-homepage-demo/index.html"
   }
 ];
