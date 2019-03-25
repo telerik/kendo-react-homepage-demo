@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <h1 className="demo-heading">Github Repos</h1>
+        <h1 className="demo-heading">GitHub Repos</h1>
         <TabStrip selected={this.state.selected} onSelect={this.handleSelect}>
           <TabStripTab title="KendoReact">
             <KendoGridContainer repo="kendo" />

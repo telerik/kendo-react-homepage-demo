@@ -117,10 +117,10 @@ export class KendoGridContainer extends React.Component {
                                     detail={(props) => <DetailComponent {...props} makeChartData={this.makeChartData} />}
                                 >
                                     <GridColumn field="node.number" title="ID" width={100} />
-                                    <GridColumn field="node.state" title="State" cell={StateCell} width={100} columnMenu={ColumnMenu} />
+                                    <GridColumn field="node.state" title="State" cell={StateCell} width={100} />
                                     <GridColumn field="node.title" title="Issue" columnMenu={ColumnMenu} />
                                     <GridColumn field="node.assignees.node" title="Assigned to" width={200} cell={АssignedTo} sortable={false} />
-                                    <GridColumn field="node.createdAt" title="Create on" width={200} format='{0:yyyy/MM/dd hh:mm a}' filter="date" columnMenu={ColumnMenu} />
+                                    <GridColumn field="node.createdAt" title="Created on" width={200} format='{0:yyyy/MM/dd hh:mm a}' filter="date" columnMenu={ColumnMenu} />
                                 </Grid>
                                 {loading && <LoadingPanel />}
                             </React.Fragment>)
