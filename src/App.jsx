@@ -28,11 +28,11 @@ class App extends Component {
       <ApolloProvider client={client}>
         <h1 className="demo-heading">GitHub Issues Demo</h1>
         <TabStrip selected={this.state.selected} onSelect={this.handleSelect} tabPosition={"top"}>
-          <TabStripTab title="React">
+          <TabStripTab title="React Repo">
             <KendoGridContainer repo="react" />
           </TabStripTab>
-          <TabStripTab title="KendoReact">
-            <KendoGridContainer repo="kendo" />
+          <TabStripTab title="GraphQL-JS Repo">
+            <KendoGridContainer repo="gql" />
           </TabStripTab>
         </TabStrip>
       </ApolloProvider>
