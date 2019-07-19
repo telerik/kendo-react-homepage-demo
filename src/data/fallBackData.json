@@ -5,802 +5,6 @@
         "edges": [
           {
             "node": {
-              "title": "Handling non Error instance errors is broken",
-              "state": "CLOSED",
-              "number": 1393,
-              "body": "Currently graphql handles resolve error as follows:\r\n```\r\nfunction asErrorInstance(error) {\r\n  return error instanceof Error ? error : new Error(error || undefined);\r\n}\r\n```\r\nThis is problematic because if the error is not a string or an instance of `Error` then the error will be serialized as `[object Object]` and the workaround (filling up the code with try-catch statements and converting them to `Error` instances) defeats the purpose of handling errors at the graphql library level.\r\n\r\nPlease provide a configurable mechanism for dealing with errors.",
-              "createdAt": "2018-06-15T07:47:38Z",
-              "author": {
-                "login": "geogeim",
-                "avatarUrl": "https://avatars1.githubusercontent.com/u/16436533?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1393",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "enhancement",
-                      "color": "84b6eb"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "14.0.0-rc.2 cannot be used in Angular app",
-              "state": "CLOSED",
-              "number": 1394,
-              "body": "I tried to use the prerelease version in an Angular 6 app, but the app could not be compiled:\r\n\r\n<pre>\r\nERROR in ./node_modules/graphql/index.mjs\r\n34:0-49 Can't reexport the named export 'graphql' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n34:0-49 Can't reexport the named export 'graphqlSync' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'DEFAULT_DEPRECATION_REASON' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLBoolean' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLDeprecatedDirective' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLDirective' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLEnumType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLFloat' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLID' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLIncludeDirective' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLInputObjectType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLInt' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLInterfaceType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLList' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLNonNull' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLObjectType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLScalarType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLSkipDirective' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLString' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'GraphQLUnionType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'SchemaMetaFieldDef' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'TypeKind' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'TypeMetaFieldDef' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'TypeNameMetaFieldDef' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export '__Directive' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export '__DirectiveLocation' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export '__EnumValue' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export '__Field' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export '__InputValue' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export '__Schema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export '__Type' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export '__TypeKind' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertAbstractType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertCompositeType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertEnumType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertInputObjectType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertInputType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertInterfaceType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertLeafType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertListType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertNamedType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertNonNullType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertNullableType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertObjectType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertOutputType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertScalarType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertUnionType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertValidSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'assertWrappingType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'getNamedType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'getNullableType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'introspectionTypes' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isAbstractType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isCompositeType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isDirective' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isEnumType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isInputObjectType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isInputType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isInterfaceType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isIntrospectionType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isLeafType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isListType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isNamedType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isNonNullType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isNullableType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isObjectType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isOutputType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isScalarType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isSpecifiedDirective' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isSpecifiedScalarType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isUnionType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'isWrappingType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'specifiedDirectives' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'specifiedScalarTypes' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n36:0-47:50 Can't reexport the named export 'validateSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'BREAK' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'DirectiveLocation' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'Kind' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'Source' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'TokenKind' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'getLocation' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'getVisitFn' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'parse' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'parseType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'parseValue' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'print' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'visit' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'visitInParallel' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n49:0-52:117 Can't reexport the named export 'visitWithTypeInfo' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n54:0-101 Can't reexport the named export 'defaultFieldResolver' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n54:0-101 Can't reexport the named export 'execute' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n54:0-101 Can't reexport the named export 'getDirectiveValues' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n54:0-101 Can't reexport the named export 'responsePathAsArray' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n55:0-68 Can't reexport the named export 'createSourceEventStream' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n55:0-68 Can't reexport the named export 'subscribe' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'FieldsOnCorrectTypeRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'FragmentsOnCompositeTypesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'KnownArgumentNamesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'KnownDirectivesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'KnownFragmentNamesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'KnownTypeNamesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'LoneAnonymousOperationRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'NoFragmentCyclesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'NoUndefinedVariablesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'NoUnusedFragmentsRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'NoUnusedVariablesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'OverlappingFieldsCanBeMergedRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'PossibleFragmentSpreadsRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'ProvidedRequiredArgumentsRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'ScalarLeafsRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'SingleFieldSubscriptionsRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'UniqueArgumentNamesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'UniqueDirectivesPerLocationRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'UniqueFragmentNamesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'UniqueInputFieldNamesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'UniqueOperationNamesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'UniqueVariableNamesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'ValidationContext' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'ValuesOfCorrectTypeRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'VariablesAreInputTypesRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'VariablesInAllowedPositionRule' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'specifiedRules' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n57:0-59:675 Can't reexport the named export 'validate' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n61:0-64 Can't reexport the named export 'GraphQLError' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n61:0-64 Can't reexport the named export 'formatError' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n61:0-64 Can't reexport the named export 'printError' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'BreakingChangeType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'DangerousChangeType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'TypeInfo' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'assertValidName' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'astFromValue' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'buildASTSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'buildClientSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'buildSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'coerceValue' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'concatAST' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'doTypesOverlap' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'extendSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'findBreakingChanges' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'findDangerousChanges' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'findDeprecatedUsages' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'getDescription' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'getIntrospectionQuery' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'getOperationAST' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'getOperationRootType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'introspectionFromSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'introspectionQuery' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'isEqualType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'isTypeSubTypeOf' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'isValidJSValue' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'isValidLiteralValue' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'isValidNameError' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'lexicographicSortSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'printIntrospectionSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'printSchema' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'printType' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'separateOperations' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'typeFromAST' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'valueFromAST' from non EcmaScript module (only default export is available)\r\nERROR in ./node_modules/graphql/index.mjs\r\n63:0-96:42 Can't reexport the named export 'valueFromASTUntyped' from non EcmaScript module (only default export is available)\r\n<pre>\r\n",
-              "createdAt": "2018-06-18T14:23:05Z",
-              "author": {
-                "login": "Ben305",
-                "avatarUrl": "https://avatars1.githubusercontent.com/u/2217367?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1394",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Problem with GraphQLList",
-              "state": "CLOSED",
-              "number": 1403,
-              "body": "I am getting this error \r\nError: Expected [object Object] to be a GraphQL type. \r\nwhenever I try to use GraphQLList in this type file and this is how my type file is\r\n\r\nconst graphql = require(\"graphql\");\r\nconst ProjectType = require(\"./projectType\");\r\n\r\nconst { GraphQLObjectType, GraphQLString, GraphQLList } = graphql;\r\n\r\nconst UserType = new GraphQLObjectType({\r\n  name: \"UserType\",\r\n  fields: () => ({\r\n    id: { type: GraphQLString },\r\n    name: { type: GraphQLString },\r\n    githubProfile: { type: GraphQLString },\r\n    username: { type: GraphQLString },\r\n    password: { type: GraphQLString },\r\n    email: { type: GraphQLString },\r\n    projects: {\r\n      type: new GraphQLList(ProjectType),\r\n      resolve(parentValues, args) {\r\n        return new Promise((resolve, reject) => {\r\n          User.findById(parentValues.id)\r\n            .populate(\"projects\")\r\n            .then(user => {\r\n              resolve(user.projects);\r\n            });\r\n        });\r\n      }\r\n    },\r\n\r\n    \r\n\r\n  })\r\n});\r\n\r\nmodule.exports = UserType;\r\n\r\n\r\nThis question is also stackoverflow but no one was able to answer to so I am opening it here.\r\nhttps://stackoverflow.com/questions/50905175/error-expected-object-object-to-be-a-graphql-type\r\nThanks in advance\r\n",
-              "createdAt": "2018-06-23T11:16:20Z",
-              "author": {
-                "login": "highskillzz",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/20688709?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1403",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "CATs support",
-              "state": "OPEN",
-              "number": 1404,
-              "body": "[GraphQL Compatibility Acceptance Tests](https://github.com/graphql-cats/graphql-cats) (or `graphql-cats`) is a project that aims to provide a set of compatibility acceptance tests for libraries that implement the [GraphQL specification](https://github.com/facebook/graphql). \r\n\r\nWe discussed this at several [GraphQL WG](https://github.com/graphql/graphql-wg) meetings and there was a general consensus on implementing a graphql-cats diver for reference implementation as well. \r\n\r\nIf somebody is interested in working on it, we would be happy to support you along the way. You can join our [gitter chat](https://gitter.im/graphql-cats/graphql-cats?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) if you have some questions or would like to discuss something. Also feel free to [create issues](https://github.com/graphql-cats/graphql-cats/issues/new) and PRs for graphql-cats. (I would be happy to work on the reference implementation driver myself, but due to some time constraints I can't dedicate enough time for it).\r\n\r\n[\"Example Driver Implementation\"](https://github.com/graphql-cats/graphql-cats#example-driver-implementation) provides some guidance for a driver implementation, although all examples are written in scala. I hope that as soon as we have driver for a reference implementation, we can rewrite this section of the docs and provide all examples in JavaScript.",
-              "createdAt": "2018-06-23T20:16:18Z",
-              "author": {
-                "login": "OlegIlyenko",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/156569?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1404",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "help wanted",
-                      "color": "159818"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Default values for Non Null types",
-              "state": "CLOSED",
-              "number": 1405,
-              "body": "When supplying a default value for a required field, it is not used and instead throws a validation error.\r\n\r\n```js\r\nconst { graphql, buildSchema } = require('graphql')\r\n\r\nconst schema = buildSchema(`\r\ntype Query {\r\n  hello(x: Int! = 42): Int\r\n}\r\n`)\r\n\r\nconst root = {\r\n  hello: (args) => args.x\r\n}\r\n\r\ngraphql(schema, '{ hello }', root).then(console.log)\r\n``` \r\n\r\nProduces:\r\n`GraphQLError: Field \"hello\" argument \"x\" of type \"Int!\" is required but not provided.`",
-              "createdAt": "2018-06-25T16:29:33Z",
-              "author": {
-                "login": "benwaffle",
-                "avatarUrl": "https://avatars1.githubusercontent.com/u/1713819?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1405",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "bug",
-                      "color": "fc2929"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Website broken",
-              "state": "CLOSED",
-              "number": 1407,
-              "body": "https://graphql.org goes into an infinite redirect loop... totally unusable.",
-              "createdAt": "2018-06-26T15:31:06Z",
-              "author": {
-                "login": "murrayju",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/508461?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1407",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "ObjectType implementing InterfaceType doesn't end up in the schema",
-              "state": "CLOSED",
-              "number": 1413,
-              "body": "Consider this code:\r\n\r\n```js\r\nconst {\r\n  GraphQLID,\r\n  GraphQLInterfaceType,\r\n  GraphQLNonNull,\r\n  GraphQLObjectType,\r\n  GraphQLSchema,\r\n  printSchema,\r\n} = require('graphql')\r\n\r\nconst NodeType = new GraphQLInterfaceType({\r\n  name: 'Node',\r\n  fields: {\r\n    id: {\r\n      type: new GraphQLNonNull(GraphQLID),\r\n    },\r\n  },\r\n})\r\n\r\nclass Car {} // Kept brief for demo purpose\r\n\r\nconst CarType = new GraphQLObjectType({\r\n  name: 'Car',\r\n  interfaces: [NodeType],\r\n  fields: {\r\n    id: {\r\n      type: new GraphQLNonNull(GraphQLID),\r\n    },\r\n  },\r\n  isTypeOf: value => value instanceof Car,\r\n})\r\n\r\nconst schema = new GraphQLSchema({\r\n  query: new GraphQLObjectType({\r\n    name: 'Query',\r\n    fields: {\r\n      node: {\r\n        type: NodeType,\r\n        args: {\r\n          id: {\r\n            type: new GraphQLNonNull(GraphQLID),\r\n          },\r\n        },\r\n        resolve: () => new Car(),\r\n      },\r\n    },\r\n  }),\r\n})\r\n\r\nconsole.log(printSchema(schema))\r\n```\r\n\r\nWhich gives this output:\r\n\r\n```gql\r\ninterface Node {\r\n  id: ID!\r\n}\r\n\r\ntype Query {\r\n  node(id: ID!): Node\r\n}\r\n```\r\n\r\nThis is a very simplified demo of the problem I'm running in to. Cars (in this case) don't have their own queries so they don't end up in the schema even though you can query for them by the interface they implement.\r\n\r\nHow can I make them appear in the printed schema?",
-              "createdAt": "2018-07-09T11:05:08Z",
-              "author": {
-                "login": "CrocoDillon",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/3235119?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1413",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "documentation",
-                      "color": "bfe5bf"
-                    }
-                  },
-                  {
-                    "node": {
-                      "name": "help wanted",
-                      "color": "159818"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "master",
-              "state": "CLOSED",
-              "number": 1415,
-              "body": "# Questions regarding how to use GraphQL\r\n\r\nWe want to keep signal strong in the GitHub issue tracker – to make sure that it remains the best place to track bugs and features that affect development.\r\n\r\nIf you have a question on how to use GraphQL, please [post it to Stack Overflow](https://stackoverflow.com/questions/ask?tags=graphql) with the tag [#graphql](http://stackoverflow.com/questions/tagged/graphql).\r\n\r\nPlease do not post general questions directly as GitHub issues. They may sit for weeks unanswered, or may be spontaneously closed without answer.\r\n\r\n# Reporting issues with GraphQL.js\r\n\r\nBefore filing a new issue, make sure an issue for your problem doesn't already exist.\r\n\r\nThe best way to get a bug fixed is to provide a *pull request* with a simplified failing test case (or better yet, include a fix).\r\n\r\n# Feature requests\r\n\r\nGraphQL.js is a reference implementation of the [GraphQL specification](https://github.com/facebook/graphql). To discuss new features which are not GraphQL.js specific and fundamentally change the way GraphQL works, open an issue against the specification.\r\n\r\n# Security bugs\r\n\r\nFacebook has a [bounty program](https://www.facebook.com/whitehat/) for the safe disclosure of security bugs. With that in mind, please do not file public issues; go through the process outlined on that page.\r\n",
-              "createdAt": "2018-07-11T20:51:59Z",
-              "author": {
-                "login": "ryangueraa",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/35643741?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1415",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "[Feature requests]Allow resolve function returns a custom deferred object in order to do decent query optimization.",
-              "state": "OPEN",
-              "number": 1416,
-              "body": "I have read https://github.com/graphql/graphql-js/issues/26 , https://github.com/graphql/graphql-js/issues/700 and https://github.com/graphql/graphql-js/pull/304 . It seems like there is no well-agreed way to combine GraphQL and database. GraphQL.js loses a certain amount of chances to do query optimization. Am I right? I have a simple proposal. In the `resolve` function, we can return a DeferredObject instead of a normal JS object or Promise. Only in the very last moment, the deferred object queries the DB. Does this make sense?\r\n\r\nThe special DeferredObjects links with each other. So the minimal query fields needed can be detected. GraphQL.js may finally call `await someDeferredObject.excute()` multiple times. Since we have ES6 getter and setter. I think it may be quite seamless to current code base.",
-              "createdAt": "2018-07-12T18:34:22Z",
-              "author": {
-                "login": "JimChengLin",
-                "avatarUrl": "https://avatars1.githubusercontent.com/u/16563096?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1416",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "question",
-                      "color": "cc317c"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Typed arguments in resolvers",
-              "state": "OPEN",
-              "number": 1419,
-              "body": "It's kinda feature request. I've [posted a question](https://stackoverflow.com/questions/51337630/detecting-argument-types-in-resolver) how to do this using existing tools (btw I'l be very grateful if someone can help with this), but I think this really should be in a spec/ref implementation.\r\n\r\nResolver accepts arguments as plain javascript object, already combined from inline arguments and variables. But GraphQL is strongly typed and this benefit doesn't work here. I get arguments, but I don't know types of these arguments. Getting types of args in resolver is useful because it gives more possibilities to process input. To validate or transform it based on types. This is especially useful in scenarios when you have deeply nested input with relations, multiple named input types, repeated types (lists of objects), etc.\r\n\r\nAnd I see two variants of improving this:\r\n1. Change plain object in resolver args to special object with types mappings\r\n2. Add a function to graphql core that given args and resolverInfo will return type map",
-              "createdAt": "2018-07-14T10:46:54Z",
-              "author": {
-                "login": "terion-name",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/1060205?v=4"
-              },
-              "assignees": {
-                "nodes": [
-                  {
-                    "name": "Terion",
-                    "avatarUrl": "https://avatars0.githubusercontent.com/u/1060205?v=4"
-                  }
-                ]
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1419",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "enhancement",
-                      "color": "84b6eb"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Setting type via object directly and object through a function has different results",
-              "state": "CLOSED",
-              "number": 1420,
-              "body": "Hi,\r\n\r\nI'm not sure if this is a bug can't see any obvious reason as to why it wouldn't work, the other issue I'm facing is that I'm not getting any errors returns and just an empty object.\r\n\r\n```\r\n// works using module.exports = new GraphQLObjectType({...}); in ./type\r\nconst type = require('./type');\r\n\r\nmodule.exports = () => ({\r\n  object: {\r\n    type: type,\r\n    resolve: () => ({})\r\n  },\r\n});\r\n\r\n\r\n// does NOT work using module.exports = () => new GraphQLObjectType({...}); in ./type\r\nconst type = require('./type');\r\n\r\nmodule.exports = () => ({\r\n  object: {\r\n    type: type(),\r\n    resolve: () => ({})\r\n  },\r\n});\r\n```\r\n\r\nBeing able to use a function would be ideal as I can then pass a database connection through which is proving difficult with a \"static\" object.\r\nIs there any obvious reason why this wouldn't work as they both seem to return exactly the same object when creating a schema, but the schema creation fails.\r\n\r\nThanks,\r\nGary",
-              "createdAt": "2018-07-16T08:44:43Z",
-              "author": {
-                "login": "garyrutland",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/3715101?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1420",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Parser for Language Services and Editor Tooling",
-              "state": "OPEN",
-              "number": 1426,
-              "body": "Hello.\r\n\r\nI was wondering if supporting/enabling editor tooling and language services is in the scope of this project.\r\nMore specifically I was wondering if **having a Parser that has low level capabilities for supporting editor tooling is within the scope of this project.**\r\n\r\nSuch capabilities may include:\r\n* Fault Tolerance and reporting multiple syntax errors to the user.\r\n* Syntactic Content Assist (providing the next possible kind of Token).\r\n* **Lossless** output format (Know where every comma and parenthesis are in the text).\r\n* Re-useable parser that does not only output the compiler AST, meaning it can be customized to output different kinds of outputs for different needs.\r\n\r\nI saw there is work done on the [graphql-language-service](https://github.com/graphql/graphql-language-service) And there there seems to be a [separate parser](https://github.com/graphql/graphql-language-service/tree/master/packages/parser) implemented there.\r\n\r\nCheers.\r\nShahar.\r\n\r\n",
-              "createdAt": "2018-07-18T19:42:34Z",
-              "author": {
-                "login": "bd82",
-                "avatarUrl": "https://avatars3.githubusercontent.com/u/4233843?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1426",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "needs exploration",
-                      "color": "fbca04"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "merge ast trees",
-              "state": "OPEN",
-              "number": 1428,
-              "body": "# Feature request\r\n\r\nAnother feature that is extremely useful and utils are lacking it: merging ast trees.\r\n\r\nPrimary use case: merging two queries (selections) to dynamically construct queries. There are plenty of cases where it is needed, mainly in libraries and in cases of  graphql to graphql communication.\r\n\r\nPS\r\nIt would be great if somebody can say how to do this properly now (simple deep merge doesn't wotk properly)",
-              "createdAt": "2018-07-21T14:25:22Z",
-              "author": {
-                "login": "terion-name",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/1060205?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1428",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "help wanted",
-                      "color": "159818"
-                    }
-                  },
-                  {
-                    "node": {
-                      "name": "proposal",
-                      "color": "1d76db"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Please make subscription value structure consistent with query value structure",
-              "state": "CLOSED",
-              "number": 1433,
-              "body": "So imagine the following basic schema:\r\n\r\n```graphql\r\ntype Query {\r\n  foo(tag: String): MetadataItem\r\n}\r\n\r\ntype Subscription {\r\n  foo(tag: String): MetadataItem\r\n}\r\n```\r\nMy resolver for `Query.foo` can return a `Promise<MetadataItem>`.\r\nYou would think my `subscribe` resolver could return an `AsyncIterable<MetadataItem>`.\r\nBut noooo...\r\nFor whatever reason it has to return an `AsyncIterable<{foo: MetadataItem}>`.\r\nWhy do I have to wrap the values I yield in an object?\r\nIs there a good reason for this or is it just a mistake?\r\n\r\nThis is really annoying and it always trips me up.  Why were subscriptions designed this way instead of being more consistent with queries?  I feel very angry about how often I have had to debug issues stemming from this, because it's just not an intuitive inconsistency.  It's very easy to forget about.\r\n\r\nGraphQL could so easily wrap the values I yield in an object with the field name, the only reason I can imagine that it doesn't is some performance nitpick.",
-              "createdAt": "2018-07-26T03:52:26Z",
-              "author": {
-                "login": "jedwards1211",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/1448194?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1433",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Improve error for \"Subscription field must return Async Iterable. Received: undefined\"",
-              "state": "OPEN",
-              "number": 1442,
-              "body": "The error thrown \"Subscription field must return Async Iterable. Received: undefined\" should include where in the schema it called the subscription field and it returned undefined. ",
-              "createdAt": "2018-07-31T19:02:17Z",
-              "author": {
-                "login": "thomassuckow",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/3100037?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1442",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "enhancement",
-                      "color": "84b6eb"
-                    }
-                  },
-                  {
-                    "node": {
-                      "name": "help wanted",
-                      "color": "159818"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Inconsistent definition of value nodes",
-              "state": "CLOSED",
-              "number": 1461,
-              "body": "I noticed that \"value nodes\" are defined differently in language/ast and language/predicates:\r\n\r\n```\r\nexport type ValueNode =\r\n  | VariableNode  // <-- missing in isValueNode\r\n  | IntValueNode\r\n  | FloatValueNode\r\n  | StringValueNode\r\n  | BooleanValueNode\r\n  | NullValueNode\r\n  | EnumValueNode\r\n  | ListValueNode\r\n  | ObjectValueNode;\r\n```\r\n```\r\nexport function isValueNode(node: ASTNode): boolean %checks {\r\n  return (\r\n    node.kind === Kind.INT ||\r\n    node.kind === Kind.FLOAT ||\r\n    node.kind === Kind.STRING ||\r\n    node.kind === Kind.BOOLEAN ||\r\n    node.kind === Kind.NULL ||\r\n    node.kind === Kind.ENUM ||\r\n    node.kind === Kind.LIST ||\r\n    node.kind === Kind.OBJECT ||\r\n    node.kind === Kind.OBJECT_FIELD   // <-- missing in ValueNode\r\n  );\r\n}\r\n```\r\n\r\nShouldn't these two definitions be consistent with each other?",
-              "createdAt": "2018-08-11T14:07:18Z",
-              "author": {
-                "login": "Cito",
-                "avatarUrl": "https://avatars3.githubusercontent.com/u/464599?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1461",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "printType function to get GraphQLSchema object as a query string",
-              "state": "CLOSED",
-              "number": 1464,
-              "body": "Hi everyone, \r\nI've been struggling to mix Graphql query language with `GraphQLObjectType`  in `makeExecutableSchema` and I realized at the moment there is not any neat way to do so. \r\n\r\nHowever, there is a function to print the schema object which is `printSchema` and I wonder if there is any functionality like a `printType` function or any other solution to implement such a transformation from `GraphQLObjectType` to Graphql query language?\r\n\r\nThanks",
-              "createdAt": "2018-08-13T07:36:45Z",
-              "author": {
-                "login": "PedramMarandi",
-                "avatarUrl": "https://avatars3.githubusercontent.com/u/7813872?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1464",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Excessive number of requests. Has to be a bug",
-              "state": "CLOSED",
-              "number": 1468,
-              "body": "My graphql setup file looks like below\r\n\r\n```\r\n    app.use((req, res, next) => {\r\n        logger.entry('info', req); //LOG HERE - It's the first ever middleware\r\n        next();\r\n    });\r\n    app.use(bodyParser.json());\r\n    app.use(bodyParser.urlencoded({ extended: true }));\r\n    app.use(express.static('public'));\r\n    \r\n    app.use('/graphql',\r\n        authMiddleware,\r\n        apolloUploadExpress({\r\n            uploadDir: path.resolve(__dirname, 'public', 'img'),\r\n        }),\r\n        graphqlExpress(req => ({\r\n            schema: executableSchema,\r\n            context: {\r\n                ...req.user,\r\n                connection: {\r\n                    remoteAddress: req.connection.remoteAddress,\r\n                },\r\n                headers: {\r\n                    ...req.headers,\r\n                },\r\n                postLoader: new DataLoader(keys => batches.batchPosts(keys, req)),\r\n                commentLoader:new DataLoader(keys => batches.batchComments(keys, req)),\r\n                commentCommentLoader: new DataLoader(keys => batches.batchComments(keys, req, true)),\r\n                imageLoader:new DataLoader(keys => batches.batchPostImages(keys, req)),\r\n                hashTagLoader:new DataLoader(keys => batches.batchPostHashTags(keys, req)),\r\n                postLikableLoader:new DataLoader(keys => batches.batchPostLikables(keys, req)),\r\n                postDislikableLoader:new DataLoader(keys => batches.batchPostLikables(keys, req, false)),\r\n                postFactcheckLoader:new DataLoader(keys => batches.batchFactcheckables(keys, req)),\r\n                postFollowingLoader: new DataLoader(keys => batches.batchPostFollowing(keys, req)),\r\n                commentLikeableLoader:new DataLoader(keys => batches.batchCommentLikable(keys, req)),\r\n                commentDislikeableLoader:new DataLoader(keys => batches.batchCommentLikable(keys, req, false))\r\n            },\r\n            formatError,\r\n        })));\r\n\r\n```\r\nI have dataloader properly configured and working. However, the request was still taking too long to load mere 14 posts with simple texts so I tried logging the entry of the request and I get below \r\n\r\n```\r\n    2018-08-13T19:07:07.091Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.102Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.108Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.111Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.111Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.111Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.113Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.114Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.115Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.115Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.115Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.118Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.121Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.121Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.121Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.124Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.127Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.127Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.127Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.127Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.130Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.130Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.131Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.131Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.133Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.133Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.134Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n    2018-08-13T19:07:07.134Z [ info ] #ENTRY# IP:127.0.0.1 Route:undefined AuthToken:undefined RefreshToken:undefined\r\n```\r\n\r\nI get slightly over 30 request for a single request that I try to achieve. I thought it was the schema nesting problem; however, even after I have deleted all my field request except for ID - so definitely only single request is required, I still have 28 requests hitting the server. It does not seem normal at all and I think my server would pick up a lot more speed if I can reduce these unnecessary requests. Can someone help me or point me to right direction please?\r\n\r\nBelow is an example that causes 20+ request with only one field request.\r\n\r\n```\r\n    import gql from 'graphql-tag';\r\n    \r\n    export default gql`\r\n        query paginatePosts($count:Int, $after:String){\r\n          paginatePosts(count:$count, after:$after){\r\n              id\r\n          }\r\n        }\r\n    `\r\n```",
-              "createdAt": "2018-08-13T19:13:32Z",
-              "author": {
-                "login": "serendipity1004",
-                "avatarUrl": "https://avatars3.githubusercontent.com/u/20388249?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1468",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "GraphQL issue with custom type",
-              "state": "CLOSED",
-              "number": 1469,
-              "body": "Hi I am learning to use graphql and was facing an issue in mutation I am getting this error:\r\n**Error: Mutation.signup field type must be Output Type but got: [object Object].** \r\nwhenever I am defining mutation like this.\r\n\r\nuser_type.js\r\n```js\r\nconst graphql = require('graphql');\r\nconst {GraphQLObjectType,GraphQLString} = graphql;\r\n\r\nconst UserType = new GraphQLObjectType({\r\n  name : 'UserType',\r\n  fields : {\r\n    email : { type : GraphQLString }\r\n  }\r\n});\r\n\r\nmodule.expots = UserType;\r\n```\r\nmutation.js\r\n```js\r\nconst graphql = require('graphql');\r\nconst {\r\n  GraphQLObjectType,\r\n  GraphQLString\r\n} = graphql;\r\nconst UserType = require('./types/user_type');\r\nconst AuthService = require('../services/auth');\r\n\r\nconst mutation = new GraphQLObjectType({\r\n  name : 'Mutation',\r\n  fields : {\r\n    signup : {\r\n      type : UserType,\r\n      args : {\r\n        email : { type : GraphQLString },\r\n        password : { type : GraphQLString }\r\n      },\r\n      resolve(parentValue, { email, password}, req){\r\n        return AuthService.signup({ email, password, req })\r\n      }\r\n    }\r\n  }\r\n});\r\n\r\nmodule.exports = mutation;\r\n```\r\nand if I copy paste the code of user_type.js to mutation.js it is working fine. I am not able to understand why it is behaving like this.\r\n\r\nThis is the code which is working.\r\nmutation.js\r\n```js\r\nconst graphql = require('graphql');\r\nconst {\r\n  GraphQLObjectType,\r\n  GraphQLString\r\n} = graphql;\r\n//const UserType = require('./types/user_type');\r\nconst AuthService = require('../services/auth');\r\n\r\nconst UserType = new GraphQLObjectType({\r\n  name : 'UserType',\r\n  fields : {\r\n    email : { type : GraphQLString }\r\n  }\r\n});\r\n\r\nconst mutation = new GraphQLObjectType({\r\n  name : 'Mutation',\r\n  fields : {\r\n    signup : {\r\n      type : UserType,\r\n      args : {\r\n        email : { type : GraphQLString },\r\n        password : { type : GraphQLString }\r\n      },\r\n      resolve(parentValue, { email, password}, req){\r\n        return AuthService.signup({ email, password, req })\r\n      }\r\n    }\r\n  }\r\n});\r\n\r\nmodule.exports = mutation;\r\n```\r\n\r\n\r\n",
-              "createdAt": "2018-08-13T20:36:53Z",
-              "author": {
-                "login": "shriharidani",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/14224917?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1469",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "GraphQL returning empty response",
-              "state": "CLOSED",
-              "number": 1474,
-              "body": "I am getting empty response from GraphQL server when connecting it with REST endpoint, however, I confirmed that I am getting response from REST endpoint. I have provided detailed explanation in SO.\r\n\r\nhttps://stackoverflow.com/questions/51913873/graphql-returning-empty-response/51920269",
-              "createdAt": "2018-08-19T19:28:23Z",
-              "author": {
-                "login": "vishrantgupta",
-                "avatarUrl": "https://avatars3.githubusercontent.com/u/1741243?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1474",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Create custom Root Type",
-              "state": "CLOSED",
-              "number": 1475,
-              "body": "Hi I wonder if it is possible to create custom Root Type in GraphQL as following with the \"Auth\" Root type : ​\r\n```\r\nmodule.exports = new GraphQLSchema({ \r\n    query : new GraphQLObjectType({ \r\n    name: \"Query\", \r\n    fields: queries\r\n     }), \r\n    mutation: new GraphQLObjectType({\r\n     name: \"Mutation\", \r\n    fields: mutations }),\r\n    auth: new GraphQLObjectType({\r\n     name: \"Auth\", \r\n    fields: auth })\r\n });\r\n\r\n```\r\nSeems my GraphQL server fails to support it so far,\r\n\r\nany hint would be great,\r\n\r\nthanks​",
-              "createdAt": "2018-08-22T11:47:34Z",
-              "author": {
-                "login": "Hocoh",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/40642296?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1475",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "AST Printer vs Schema Printer?",
-              "state": "CLOSED",
-              "number": 1478,
-              "body": "The schema printer renders description block strings differently than the AST printer renders block string descriptions. I imagine there are a few other differences between the printers as well. \r\n\r\nI'm implementing a GraphQL server based on GraphQL JS. For printing the schema, I first convert the schema to an AST, then re-use the AST printer. This means I have to modify some of the test cases because the implementation of the schema printer differs slightly (as in the case of descriptions) from the AST printer. \r\n\r\n***What is the rationale in GraphQL JS of having both a schema printer and an AST printer, and should GraphQL JS consider migrating to the use of the single AST printer (assuming there was a function to convert a schema to an AST)?***",
-              "createdAt": "2018-08-24T04:33:19Z",
-              "author": {
-                "login": "craigsmitham",
-                "avatarUrl": "https://avatars1.githubusercontent.com/u/42036?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1478",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "needs exploration",
-                      "color": "fbca04"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "\"one instance of graphql\" error when using esm package.",
-              "state": "CLOSED",
-              "number": 1479,
-              "body": "When using `esm` package (https://github.com/standard-things/esm) even most simple package.json configurations (only dependancies are `esm` and `graphql-yoga`) results in the `Error: Cannot use GraphQLSchema \"[object Object]\" from another module or realm.` error when using imports.\r\n\r\n`node -r esm testWithImport.js` will fail while `node testWithRequire.js` and `node -r esm testWithRequire.js` will work.",
-              "createdAt": "2018-08-24T10:45:03Z",
-              "author": {
-                "login": "Pokute",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/5271115?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1479",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "needs exploration",
-                      "color": "fbca04"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "ExecutionResult type should have a generic type for its data property",
-              "state": "CLOSED",
-              "number": 1480,
-              "body": "Today when you write a `mutation`, even if you provide generic types for it, the resulting object does not have `data` object strongly typed. Please see example:\r\n```ts\r\ntype CreateTodoResult = {\r\n  id: number;\r\n  text: string;\r\n  isDone: boolean;\r\n}\r\n\r\ntype CreateTodoMutation = {\r\n  __typename?: \"Mutation\";\r\n  createTodo: CreateTodoResult;\r\n}\r\n\r\nthis.apollo.mutate<CreateTodoMutation, {}>({ mutation }).subscribe(res => {\r\n  // res.data is of type any instead of CreateTodoMutation\r\n  console.log(res.data.createTodo)\r\n});\r\n```\r\nIn the example above `res.data` will be of type `any` instead of expected `CreateTodoMutation`.\r\nI can submit a PR fixing the issue if nobody has objections.",
-              "createdAt": "2018-08-25T21:15:03Z",
-              "author": {
-                "login": "DmitryEfimenko",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/2098175?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1480",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Enable Flow in test files",
-              "state": "OPEN",
-              "number": 1484,
-              "body": "Currently, tests are covering only runtime behavior and not testing Flow types.\r\nSo it's very easy to break Flow types for public APIs and have it to pass `yarn t`, e.g. https://github.com/graphql/graphql-js/pull/1483#discussion_r212811061",
-              "createdAt": "2018-08-26T13:43:39Z",
-              "author": {
-                "login": "IvanGoncharov",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/8336157?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1484",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "enhancement",
-                      "color": "84b6eb"
-                    }
-                  },
-                  {
-                    "node": {
-                      "name": "help wanted",
-                      "color": "159818"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Parser/Lexer error with an empty query type",
-              "state": "CLOSED",
-              "number": 1495,
-              "body": "Hei,\r\n\r\nI have a very simple schema with only mutations. The server library I use requires a query type to be defined, so I defined an empty Query type.\r\n\r\nThis is my very simple schema:\r\n```\r\ntype Query {}\r\n```\r\n\r\nAnd the error when I try to parse it:\r\n\r\n```\r\nV:\\whatever\\node_modules\\graphql\\language\\parser.js:1299\r\n  throw (0, _error.syntaxError)(lexer.source, token.start, 'Expected ' + kind + ', found ' + (0, _lexer.getTokenDesc)(token));\r\n  ^\r\nSyntax Error: Expected Name, found }\r\n\r\nGraphQL request (1:13)\r\n1: type Query {}\r\n```\r\n\r\nGraphQL Version : 0.13.2",
-              "createdAt": "2018-08-30T12:05:54Z",
-              "author": {
-                "login": "fungiboletus",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/45740?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1495",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "14.0.1 is missing on NPM",
-              "state": "CLOSED",
-              "number": 1512,
-              "body": "Latest version on NPM:\r\nhttps://www.npmjs.com/package/graphql\r\n![image](https://user-images.githubusercontent.com/8336157/45181422-188a8500-b227-11e8-9d87-bb59ea241c34.png)\r\n\r\nThis happened because of this:\r\nhttps://travis-ci.org/graphql/graphql-js/jobs/424976995#L491-L493\r\n```\r\nAuthenticated with email lee@leebyron.com and API key ****************b8da\r\nNPM API key format changed recently. If your deployment fails, check your API key in ~/.npmrc.\r\nhttp://docs.travis-ci.com/user/deployment/npm/\r\n```\r\n\r\nDetails: https://blog.npmjs.org/post/175824896885/incident-report-npm-inc-operations-incident-of\r\n> As a precautionary measure, npm has revoked every access token that had been created prior to 2:30 pm UTC (7:30 am California time) today. This measure requires every registered npm user to re-authenticate to npmjs.com and generate new access tokens,",
-              "createdAt": "2018-09-06T19:59:17Z",
-              "author": {
-                "login": "IvanGoncharov",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/8336157?v=4"
-              },
-              "assignees": {
-                "nodes": [
-                  {
-                    "name": "Lee Byron",
-                    "avatarUrl": "https://avatars3.githubusercontent.com/u/50130?v=4"
-                  },
-                  {
-                    "name": "Matt Mahoney",
-                    "avatarUrl": "https://avatars2.githubusercontent.com/u/1741248?v=4"
-                  }
-                ]
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1512",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "String coercion broken for Float Scalar type in 14.0.0",
-              "state": "CLOSED",
-              "number": 1513,
-              "body": "I was noticing in the release notes that there is stricter coercion introduced with this release per the spec. But I believe there might be an issue with the Float scalar.\r\n\r\nPer the spec.\r\n\r\n> GraphQL servers may coerce non‐floating‐point internal values to Float when reasonable without losing information, otherwise they must raise a field error. Examples of this may include returning 1.0 for the integer number 1, or 123.0 for the string \"123\".\r\n\r\nTo my understanding, that is saying the Float scalar should handle a string that is a valid number such as \"123\". I'm receiving errors after upgrading when entering a value like that now. Is my understanding incorrect? \r\n\r\n\r\nStacktrace.\r\nTypeError: Float cannot represent non numeric value: \"500\"\r\n    at GraphQLScalarType.coerceFloat [as parseValue] (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/type/scalars.js:110:11)\r\n    at coerceValue (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/utilities/coerceValue.js:53:30)\r\n    at coerceValue (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/utilities/coerceValue.js:126:30)\r\n    at /Users/kylezinter/Developement/launchplan/api/node_modules/graphql/utilities/coerceValue.js:88:27\r\n    at Array.forEach (<anonymous>)\r\n    at forEach (/Users/kylezinter/Developement/launchplan/api/node_modules/iterall/index.js:83:25)\r\n    at coerceValue (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/utilities/coerceValue.js:87:28)\r\n    at coerceValue (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/utilities/coerceValue.js:40:12)\r\n    at coerceValue (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/utilities/coerceValue.js:126:30)\r\n    at getVariableValues (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/execution/values.js:85:54)\r\n    at buildExecutionContext (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/execution/execute.js:196:63)\r\n    at executeImpl (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/execution/execute.js:70:20)\r\n    at Object.execute (/Users/kylezinter/Developement/launchplan/api/node_modules/graphql/execution/execute.js:62:229)\r\n    at doRunQuery (/Users/kylezinter/Developement/launchplan/api/node_modules/apollo-server-core/dist/runQuery.js:124:42)\r\n    at /Users/kylezinter/Developement/launchplan/api/node_modules/apollo-server-core/dist/runQuery.js:21:56\r\n    at process._tickCallback (internal/process/next_tick.js:68:7)",
-              "createdAt": "2018-09-06T21:23:33Z",
-              "author": {
-                "login": "kylezinter",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/3508358?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1513",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "[Feature Request] Resolver Middleware",
-              "state": "OPEN",
-              "number": 1516,
-              "body": "I'm interested to hear how others feel about the idea of using middleware installed on resolver functions to allow all resolvers in a schema to perform common functionality.\r\n\r\nAs my schema grows I've found more and more of a need to add some of the same logic to all my resolvers. It would be nice if we could add some middleware that would be executed on resolvers in the schema when we go to execute the query. This could allow users to implement things like custom error handling, logging, and authorization on all resolvers without the need to add them to each resolver on the schema.\r\n",
-              "createdAt": "2018-09-07T19:18:31Z",
-              "author": {
-                "login": "dereklavigne18",
-                "avatarUrl": "https://avatars1.githubusercontent.com/u/31934019?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1516",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "enhancement",
-                      "color": "84b6eb"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Parser/Lexer error with an empty interface",
-              "state": "CLOSED",
-              "number": 1517,
-              "body": "Related to https://github.com/graphql/graphql-js/issues/1495\r\n\r\nIs having empty interface in schema allowed?\r\n\r\n```gql\r\ninterface Node\r\n```\r\n\r\nI was wondering when [empty type](https://github.com/graphql/graphql-js/blob/master/src/language/__tests__/schema-kitchen-sink.graphql#L37) is possible, empty interface could be too. Thanks!",
-              "createdAt": "2018-09-10T13:06:40Z",
-              "author": {
-                "login": "simPod",
-                "avatarUrl": "https://avatars0.githubusercontent.com/u/327717?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1517",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Unable to query for MongoDB ObjectIDs",
-              "state": "CLOSED",
-              "number": 1518,
-              "body": "I recently updated from `0.13.2` to `14.0.2` which includes breaking changes.\r\n\r\nThis introduced errors with existing queries which include MongoDB Object Ids (probably from #1382):\r\n\r\n> ID cannot represent value: { _bsontype: \\\"ObjectID\\\", id: <Buffer 5b 96 3d bf 98 0a 04 09 85 c6 6e a1> }\r\n\r\nRepository with complete, minimal repeatable example [here](https://github.com/alexmcmillan/graphql-mongodb-query-fail-demo):\r\n\r\n```\r\nconst Thing = mongoose.model('Thing', new mongoose.Schema({\r\n  id: mongoose.Schema.Types.ObjectId,\r\n  name: String\r\n}));\r\n\r\nconst ThingType = new GraphQLObjectType({\r\n  name: 'thing',\r\n  fields: function () {\r\n    return {\r\n      id: { type: GraphQLID },\r\n      name: { type: GraphQLString }\r\n    }\r\n  }\r\n});\r\n\r\nconst RootMutation = new GraphQLObjectType({\r\n  name: 'CreateMutation',\r\n  fields: {\r\n    create: {\r\n      type: ThingType,\r\n      description: 'Create new thing',\r\n      args: {\r\n        name: {\r\n          name: 'Name of Thing',\r\n          type: new GraphQLNonNull(GraphQLString)\r\n        }\r\n      },\r\n      resolve: (root, args) => {\r\n        const newThing = new Thing({ name: args.name });\r\n        newThing.id = newThing._id;\r\n        return new Promise((res, rej) => {\r\n          newThing.save(err => {\r\n            if (err) return rej(err);\r\n            res(newThing);\r\n          });\r\n        });\r\n      }\r\n    }\r\n  }\r\n});\r\n```",
-              "createdAt": "2018-09-10T20:25:36Z",
-              "author": {
-                "login": "alexmcmillan",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/1639176?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1518",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Feature request: flag for old, deprecated variable scalar coercion behavior",
-              "state": "CLOSED",
-              "number": 1519,
-              "body": "To start, I think the changes made in #1382 are good and definitely the direction GraphQL should be going!\r\n\r\nHowever, for my team, this is a _huge_ breaking change that will prevent us from updating to 14.x or later for the forseeable future. I suspect there are many client applications depending on our GraphQL server that send incorrect variable types, expecting them to be coerced. Right now I'm just doing a bit of housekeeping on the dependencies of the server - I simply don't have the bandwidth to go through all of these client applications and fix them, or even to investigate where this might be happening.\r\n\r\nPrevious breaking changes (ex. https://github.com/graphql/graphql-js/pull/927) have provided flags and options to affected functions - can we get one of those for this change? This would allow my team to at least stay up to date and save this chore for another time.",
-              "createdAt": "2018-09-10T23:03:12Z",
-              "author": {
-                "login": "dallonf",
-                "avatarUrl": "https://avatars2.githubusercontent.com/u/346300?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1519",
-              "labels": {
-                "edges": [
-                  {
-                    "node": {
-                      "name": "enhancement",
-                      "color": "84b6eb"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "node": {
-              "title": "Description when print a AST graphql object",
-              "state": "CLOSED",
-              "number": 1521,
-              "body": "Hi, currently I've parsing a graphQL schema with parse function to AST object. Later I split the schema into different array of object to store into different files, one per type (interface, object type, enums...).\r\n\r\nWhen I print the partial AST object to string again, this function avoid the descriptions attribute.. Then I lost all schema description. There are any solution for that or maybe this will be implement as new feature?\r\n\r\nExample:\r\ntype Object1{\r\n #description of attribute att1\r\n att1: String\r\n}\r\n\r\nWhen print the AST object I lost descriptions\r\ntype Object1{\r\n att1: String\r\n}\r\n",
-              "createdAt": "2018-09-12T20:31:24Z",
-              "author": {
-                "login": "amian84",
-                "avatarUrl": "https://avatars1.githubusercontent.com/u/840567?v=4"
-              },
-              "assignees": {
-                "nodes": []
-              },
-              "url": "https://github.com/graphql/graphql-js/issues/1521",
-              "labels": {
-                "edges": []
-              }
-            }
-          },
-          {
-            "node": {
               "title": "Feature request: strip whitespace from GraphQL queries / fragments / mutations / subscriptions",
               "state": "CLOSED",
               "number": 1523,
@@ -834,7 +38,7 @@
               "body": "Hello.\r\n\r\nAfter upgrading package from `\"graphql\": \"^0.13.2\"` to `\"graphql\": \"^14.0.2\",`,\r\nWhen I'm trying to get any query, I receive error:\r\n`Expected [object GraphQLSchema] to be a GraphQL schema.`\r\n\r\n<img width=\"1440\" alt=\"screen shot 2018-09-14 at 7 37 50 pm\" src=\"https://user-images.githubusercontent.com/12682937/45563339-b8fb2d80-b855-11e8-8462-f7a2cba93802.png\">\r\n\r\nMy package.json:\r\n[package.txt](https://github.com/graphql/graphql-js/files/2384162/package.txt)\r\n\r\nApp structure:\r\n<img width=\"1440\" alt=\"screen shot 2018-09-14 at 7 39 38 pm\" src=\"https://user-images.githubusercontent.com/12682937/45563435-024b7d00-b856-11e8-8d42-3ba1266437ad.png\">\r\n<img width=\"1440\" alt=\"screen shot 2018-09-14 at 7 39 47 pm\" src=\"https://user-images.githubusercontent.com/12682937/45563451-0d9ea880-b856-11e8-8c4c-48707b980dca.png\">\r\n\r\nCan this be issue in a package or it's some migration problem ?\r\n(I didn't updated project after it)\r\n\r\nThank you.\r\n",
               "createdAt": "2018-09-14T16:41:40Z",
               "author": {
-                "login": "vlad1777d",
+                "login": "vlad0337187",
                 "avatarUrl": "https://avatars1.githubusercontent.com/u/12682937?v=4"
               },
               "assignees": {
@@ -1149,7 +353,7 @@
           {
             "node": {
               "title": "Wrong Result Generated by findArgChanges",
-              "state": "OPEN",
+              "state": "CLOSED",
               "number": 1567,
               "body": "# Reporting issues with GraphQL.js\r\n\r\nHi there. The function `findArgChanges` may generate wrong result if **default value of the field is an Array**:  \r\n``` js\r\nconst oldSchema = buildSchema(`\r\n    type Type1 {\r\n      field1(name: [String!] = []): String\r\n    }\r\n\r\n    type Query {\r\n      field1: String\r\n    }\r\n  `);\r\n\r\nconst newSchema = buildSchema(`\r\n    type Type1 {\r\n      field1(name: [String!] = []): String\r\n    }\r\n\r\n    type Query {\r\n      field1: String\r\n    }\r\n  `);\r\nfindDangerousChanges(oldSchema, newSchema);\r\n```\r\nResult:\r\n``` js\r\n[ { type: 'ARG_DEFAULT_VALUE_CHANGE',\r\n    description: 'Type1.field1 arg name has changed defaultValue' } ]\r\n```\r\n\r\n# Possible Solution\r\nIn [`graphql-js/src/utilities/findBreakingChanges.js`](https://github.com/graphql/graphql-js/blob/master/src/utilities/findBreakingChanges.js#L236):  \r\n``` js\r\n          } else if (\r\n            oldArgDef.defaultValue !== undefined &&\r\n            oldArgDef.defaultValue !== newArgDef.defaultValue\r\n          ) {\r\n            dangerousChanges.push({\r\n              type: DangerousChangeType.ARG_DEFAULT_VALUE_CHANGE,\r\n              description:\r\n                `${oldType.name}.${fieldName} arg ` +\r\n                `${oldArgDef.name} has changed defaultValue`,\r\n            });\r\n          }\r\n```\r\nIf the default value is an array, `oldArgDef.defaultValue !== newArgDef.defaultValue` is always **true**.  \r\n\r\nI also create a PR which can reproduce this bug: #1566.",
               "createdAt": "2018-11-06T03:42:26Z",
@@ -1816,7 +1020,7 @@
               "body": "The parseLiteral method is called twice \r\n\r\n\r\n```\r\nconst express_graphql = require('express-graphql')\r\nvar { buildSchema } = require('graphql')\r\n\r\nvar OddType = new GraphQLScalarType({\r\n  name: 'Odd',\r\n  parseLiteral(ast) {\r\n   console. log('this print twice before continue with the resolver')\r\n    return null\r\n}\r\n}\r\n```",
               "createdAt": "2019-02-04T20:41:55Z",
               "author": {
-                "login": "createcsoft",
+                "login": "royalcala",
                 "avatarUrl": "https://avatars3.githubusercontent.com/u/12802822?v=4"
               },
               "assignees": {
@@ -1885,7 +1089,7 @@
           {
             "node": {
               "title": "Export library version number",
-              "state": "OPEN",
+              "state": "CLOSED",
               "number": 1726,
               "body": "Developers shouldn't write their own hacks to detect library version:\r\nhttps://github.com/graphql-compose/graphql-compose/blob/0ac3cc16948e7dce098705ff1163801d1f284a0a/src/utils/graphqlVersion.js",
               "createdAt": "2019-02-11T10:14:10Z",
@@ -2126,7 +1330,7 @@
           {
             "node": {
               "title": "inspect causes \"RangeError: Maxim call stack size exceeded\"",
-              "state": "OPEN",
+              "state": "CLOSED",
               "number": 1783,
               "body": "[version 4.1.1]\r\n inspect causes RangeError in this line from \"values.js\"\r\n```\r\n       error.message =\r\n                `Variable \"$${varName}\" got invalid value ${inspect(value)}; ` +\r\n                error.message;\r\n```\r\nwhen receiving a ```value```  with coercion error that contains an object such as a file to upload, maybe due to its circular structure\r\n\r\n\r\n",
               "createdAt": "2019-03-09T09:16:16Z",
@@ -2435,6 +1639,846 @@
                     }
                   }
                 ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Convert arbitrary scalars to AST.",
+              "state": "CLOSED",
+              "number": 1815,
+              "body": "Hi guys,\r\n\r\nI'm trying to make a configuration language based on GraphQL (so I don't have write lexer/parser on my own). I want to support JSON as an input type by using `graphql-type-json`. But I've got an issue of parsing AST as described by this issue https://github.com/taion/graphql-type-json/issues/73.\r\n\r\n@taion tell me that \r\n\r\n> That utility function (astFromValue) doesn't support converting arbitrary scalars to AST\r\n\r\nI've found a hack to overcome the issue. Should I make a PR against this one?",
+              "createdAt": "2019-04-07T03:36:35Z",
+              "author": {
+                "login": "anhldbk",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/3270746?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1815",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Convert arbitrary scalar values into ASTs and back",
+              "state": "OPEN",
+              "number": 1817,
+              "body": "# Reporting issues with GraphQL.js\r\n\r\nThis issue is related to: https://github.com/graphql/graphql-js/issues/1815\r\n\r\n## Expected: \r\n- Successfully convert arbitrary scalars (including default values) to ASTs\r\n- Convert ASTs into dedicated values \r\n\r\n## Code:\r\n\r\n```javascript\r\nconst {\r\n  makeExecutableSchema,\r\n} = require('graphql-tools')\r\n\r\nconst {\r\n  astFromValue,\r\n  valueFromAST,\r\n  isValidJSValue\r\n} = require('graphql/utilities')\r\n\r\nconst {\r\n  GraphQLScalarType\r\n} = require('graphql')\r\n\r\n\r\nconst JsonScalarType = new GraphQLScalarType({\r\n  name: 'JSON',\r\n  serialize: (value) => value,\r\n});\r\n\r\nconst resolveFunctions = {\r\n  JSON: JsonScalarType\r\n};\r\n\r\nconst typeDefs = `\r\n  scalar JSON\r\n  input Message {\r\n    extra: JSON\r\n    meta: JSON = {}\r\n  }\r\n`\r\n\r\nconst schema = makeExecutableSchema({\r\n  typeDefs,\r\n  resolvers: resolveFunctions\r\n})\r\n\r\nconst messageType = schema.getType('Message')\r\n\r\nconst value = {\r\n  extra: {\r\n    'key': 'andy',\r\n    \"kafka.producer.batch\": 0\r\n  }\r\n}\r\n\r\n// check if there's any error in our value\r\nconst errors = isValidJSValue(value, messageType)\r\n// errors will contain detail errors if any\r\nconsole.log(`Valid: ${errors.length==0}`)\r\n\r\n// parse and get value \r\nconst ast = astFromValue(value, messageType)\r\nconst conf = valueFromAST(ast, messageType)\r\n```\r\n\r\n## Result\r\n\r\n```sh\r\n$ npm start                                                                                                              master ✱ ◼\r\n\r\n> gql@1.0.0 start /Users/andy/Works/gql\r\n> babel-node --presets es2015 run.js\r\n\r\nValid: true\r\n/Users/andy/Works/gql/node_modules/graphql/utilities/astFromValue.js:130\r\n          throw _iteratorError;\r\n          ^\r\n\r\nTypeError: Cannot convert value to AST: { key: \"andy\", kafka.producer.batch: 0 }\r\n    at astFromValue (/Users/andy/Works/gql/node_modules/graphql/utilities/astFromValue.js:193:11)\r\n    at astFromValue (/Users/andy/Works/gql/node_modules/graphql/utilities/astFromValue.js:107:26)\r\n```\r\n\r\n## Solution\r\n\r\nI have to patch `astFromValue`: https://github.com/graphql/graphql-js/blob/8aef229cb2/src/utilities/astFromValue.js#L139-L140 by adding following lines before L139\r\n\r\n```javascript\r\n\r\nif (typeof serialized === 'object' ){\r\n    return {\r\n      kind: _kinds.Kind.OBJECT,\r\n      value: serialized\r\n    };\r\n}\r\n```\r\n\r\n## Question\r\n\r\nThe solution above may not be adequate. Would you please tell me it's worth to make a RP against this issue and how to properly resolve it?",
+              "createdAt": "2019-04-08T14:54:38Z",
+              "author": {
+                "login": "anhldbk",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/3270746?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1817",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "bug",
+                      "color": "fc2929"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Export clean ESM modules",
+              "state": "OPEN",
+              "number": 1819,
+              "body": "Using graphql@14.2.1\r\n\r\n`/node_modules/graphql/jsutils/instanceOf.mjs` line 16\r\n\r\n```js\r\n// See: https://expressjs.com/en/advanced/best-practice-performance.html#set-node_env-to-production\r\n// See: https://webpack.js.org/guides/production/\r\nexport default process.env.NODE_ENV === 'production' ? // eslint-disable-next-line no-shadow\r\n```\r\n\r\n```\r\nUncaught ReferenceError: process is not defined\r\n    at instanceOf.mjs:16\r\n```\r\n\r\nThe check `process.env.NODE_ENV === 'production'` breaks in the browser when using ESM version of `graphql` package. Is it possible to remove before publishing to NPM? Without it the ESM files work perfectly.\r\n\r\nI am not using Webpack/RollUp/Babel. Simply copying the ESM files from node_modules to my frontend folder using [unbundle](https://www.npmjs.com/package/unbundle).\r\n\r\nRelated but different:\r\n- https://github.com/graphql/graphql-js/issues/1536\r\n- https://github.com/graphql/graphql-js/issues/1293\r\n- https://github.com/graphql/graphql-js/issues/1217",
+              "createdAt": "2019-04-13T06:23:33Z",
+              "author": {
+                "login": "sebdeckers",
+                "avatarUrl": "https://avatars0.githubusercontent.com/u/78718?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1819",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "enhancement",
+                      "color": "84b6eb"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Should `parseLiteral` throw a TypeError when provided an invalid value? ",
+              "state": "CLOSED",
+              "number": 1821,
+              "body": "When calling a `GraphQLScalarType`'s `parseLiteral` or `parseValue` methods, those methods can either return `undefined` or throw an error -- in either case, the value is considered invalid and an error is included in the response. However, returning `undefined` results in a generic error message about the type being invalid, while throwing a TypeError allows us to provide additional details as to why the provided value was invalid.\r\n\r\nFor all built-in scalars, `parseValue` throws a TypeError when the value is invalid, while `parseLiteral` always returns undefined. This results in inconsistent messaging when validating literal inputs compared to variables. For example:\r\n\r\n> Expected type Int, found 2147483648.\r\n\r\ncompared with\r\n\r\n> Variable \\\"$first\\\" got invalid value 2147483648; Expected type Int; Int cannot represent non 32-bit signed integer value: 2147483648\r\n\r\nAnywhere `parseLiteral` is actually called, it's already wrapped with a try/catch and any error is handled appropriately -- namely [here](https://github.com/graphql/graphql-js/blob/8c96dc8276f2de27b8af9ffbd71a4597d483523f/src/validation/rules/ValuesOfCorrectType.js#L185-L207) and [here](https://github.com/graphql/graphql-js/blob/8c96dc8276f2de27b8af9ffbd71a4597d483523f/src/utilities/valueFromAST.js#L158-L162).\r\n\r\nI know this is fairly trivial, but is there any reason to avoid throwing a TypeError inside `parseLiteral` when the value is invalid? Even if `parseLiteral` and `parseValue` can't share the exact same logic, it might make sense to reconcile them, at least in that regard. Would you accept a PR to that affect?",
+              "createdAt": "2019-04-13T19:53:01Z",
+              "author": {
+                "login": "danielrearden",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/18018864?v=4"
+              },
+              "assignees": {
+                "nodes": [
+                  {
+                    "name": "Daniel Rearden",
+                    "avatarUrl": "https://avatars2.githubusercontent.com/u/18018864?v=4"
+                  }
+                ]
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1821",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "enhancement",
+                      "color": "84b6eb"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Please print graphql context when you report errors",
+              "state": "CLOSED",
+              "number": 1835,
+              "body": "# Feature requests\r\n\r\nSo, I got this error with some syntax error\r\n```\r\nGraphQLError: Syntax Error: Expected Name, found }\r\n    at syntaxError (/Users/mschipperheyn/development/projects/funcional/social-front/packages/server/Users/mschipperheyn/development/projects/funcional/social-front/node_modules/graphql/error/syntaxError.mjs:16:1)\r\n    at expect (/Users/mschipperheyn/development/projects/funcional/social-front/packages/server/build/webpack:/Users/mschipperheyn/development/projects/funcional/social-front/node_modules/graphql/language/parser.mjs:1441:1)\r\n    at parseName (/Users/mschipperheyn/development/projects/funcional/social-front/packages/server/build/webpack:/Users/mschipperheyn/development/projects/funcional/social-front/node_modules/graphql/language/parser.mjs:76:1)\r\n```\r\n\r\nEh, ok. There is an error, somewhere.\r\n\r\nPlease display where the error occur. Ideally, by showing the last 3 lines of graphql that were successfully parsed. I understand that syntax errors are difficult to show when you're parsing a whole document, but this is not helpful.",
+              "createdAt": "2019-04-27T16:55:58Z",
+              "author": {
+                "login": "mschipperheyn",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/384959?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1835",
+              "labels": {
+                "edges": []
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Subscription not working with alias",
+              "state": "CLOSED",
+              "number": 1846,
+              "body": "When using `alias`, subscription doesn't work.\r\nIt works normally without `alias` as expected.\r\n\r\n```\r\nsubscription OnPutItem($id: ID!) {\r\n  item: onPutItem(id: $id) { // <---------- with alias\r\n    id\r\n    data\r\n  }\r\n}\r\n\r\nmutation PutItem($data: String!) {\r\n  item: PutItem(data: $data) { // <-------- with alias\r\n    id\r\n    data\r\n  }\r\n}\r\n```\r\n\r\nAny thoughts?",
+              "createdAt": "2019-05-03T03:18:16Z",
+              "author": {
+                "login": "joseph-d-p",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/16228946?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1846",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Design proper error names",
+              "state": "OPEN",
+              "number": 1847,
+              "body": "GraphQL-JS throws a variety of errors in normal everyday use e.g. GraphQLErrors, TypeErrors, and even regular JavaScript Error objects. All of these can occur because the client supplies garbage values to the server.\r\n\r\nHowever, on the server side, I want to make a distinction between internal server errors (e.g. assertions, which should crash the server)  and client errors (which should return a good client error message to the client). \r\n\r\nTo accomplish this, I tried to write a good formatError() function to give to express-graphql. \r\n\r\nI cannot get this right, because e.g. graphql throws TypeErrors, which are indistinguishable from a server-side programming bug that causes a NodeJS TypeError. \r\n\r\nSo the proposal would be to ensure that graphql client errors are distinguishable from server errors, e.g. by giving all errors proper values for their 'name' and 'code' properties. This is also the direction in which NodeJS is going at the moment, see https://nodejs.org/api/errors.html#errors_error_code\r\n\r\n",
+              "createdAt": "2019-05-03T12:16:33Z",
+              "author": {
+                "login": "rogierschouten",
+                "avatarUrl": "https://avatars0.githubusercontent.com/u/7348032?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1847",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "needs exploration",
+                      "color": "fbca04"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Handlers for custom directives",
+              "state": "OPEN",
+              "number": 1854,
+              "body": "Hi. Seems that there is no way to handle custom directives. This issue was created at @IvanGoncharov's [request](https://github.com/graphql/graphql-js/issues/41#issuecomment-490044071).\r\n<br><br>\r\n\r\nI use [graphql-faker](https://github.com/APIs-guru/graphql-faker) to define schemas with fake data. Frontend developers feel really great with it, cause it consists of easy-to-run-graphql-server and there is no need in heavy backend, databases, etc.\r\n\r\n```bash\r\n$ graphql-faker --open ./schema.graphql \r\n```\r\n\r\nTo fake data, schema must contain some additional directives: `@fake(…)` and `@examples(…)`. They describe the true nature of entities: names, emails, phone numbers, …\r\n\r\n```graphql\r\ntype Query {\r\n  hello: String!  @fake(type: firstName)\r\n}\r\n```\r\n\r\nAs a GraphQL API developer, I write the following code:\r\n\r\n```js\r\nimport { graphql, buildSchema } from 'graphql'\r\n\r\nconst schema = buildSchema(fs.readFileSync('./schema.graphql', 'utf8'))\r\n\r\napp.use('/graphql', graphqlHTTP({ schema, rootValue }))\r\n```\r\n\r\nAnd I want the graphql parser just to ignore those `@fake` and `@examples` directives, and have a single `schema.graphql` file both for graphql-faker, and for my graphql API.\r\n\r\nAs a bypass I wrote a regex, though it's not reliable (context-grammar, braces, quotes, all that stuff). The better way is to resolve custom directives after grammar parsing, and custom directives handlers could help here.",
+              "createdAt": "2019-05-07T19:43:41Z",
+              "author": {
+                "login": "xamgore",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/4586392?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1854",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "needs exploration",
+                      "color": "fbca04"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Add utility function function for generating fully-featured schema from SDL",
+              "state": "OPEN",
+              "number": 1858,
+              "body": "With SDL [officially](https://github.com/graphql/graphql-spec/pull/90) part of the specification, would it be worthwhile to provide a way to build a build a fully-featured schema  from a Document AST?\r\n\r\nCurrently, schemas built using `buildASTSchema`/`buildSchema` lack several features that are otherwise available if constructed programmatically:\r\n\r\n* Specifying `resolve` functions for fields\r\n* Specifying `resolveType` functions for unions and interfaces and `isTypeOf` functions for types\r\n* Specifying enum value values\r\n* Adding custom scalars\r\n\r\nWorkarounds exist for some of these limitations (functions can be passed through the root object for root type fields, abstract types can be handled by explicitly providing a `__typename` property, etc.). In practice, though, if I'm starting a new project and want to use SDL to define my schema, I'm forced to use `graphql-tools` or another third-party package. This was completely understandable prior to the 2018 version of the spec, but now it may be appropriate for this functionality to be part of the core library.",
+              "createdAt": "2019-05-09T12:50:50Z",
+              "author": {
+                "login": "danielrearden",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/18018864?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1858",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "needs exploration",
+                      "color": "fbca04"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "custom serializing & parsing for nullable and non-nullable data types",
+              "state": "CLOSED",
+              "number": 1859,
+              "body": "I'd like to handle serializers & parsers for nullable and non-nullable data types differently.  An example is using Maybe types to handle `Nullable` values.\r\n\r\nexample\r\n```graphql\r\ntype data {\r\n  nullable: Int,\r\n  nonNullable: Int!\r\n}\r\n```\r\nparseValue for nullable Int  (using sanctuary.js or ramda.js)\r\n```javascript\r\nimport S from 'sanctuary';\r\n\r\nserialize (val) {\r\n  if (val == null) return 'Nothing';\r\n  else return `Just (${val})`;\r\n}\r\nparseValue (val) {  // example:  \"Just (10)\", \"Just ('String Value')\" or \"Nothing\" \r\n  if (val == 'Nothing' || !val) return S.Nothing\r\n  else return customParser (val); // returns S.Just (10) if val === \"Just (10)\"\r\n}\r\n```\r\n\r\nparseValue for non-Nullable Int\r\n```javascript\r\nserialize (val) {\r\n  return String (val);\r\n}\r\nparseValue (val) {\r\n  return Number (val)\r\n}\r\n```\r\n\r\nIs there a way to override the default methods or a way to check to see if the value has been define as nullable or not in the serializer, parser or resolver functions?\r\n",
+              "createdAt": "2019-05-09T21:24:46Z",
+              "author": {
+                "login": "abdul-takt",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/35937223?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1859",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Query with all parameters optional can't be called with empty `()`",
+              "state": "CLOSED",
+              "number": 1860,
+              "body": "I've found that given a query with all parameters optional, at least one parameter is still required to call the query with the same `queryName(...)` syntax:\r\n\r\n```js\r\ntype Query {\r\n  search(text: String, start: Int, end: Int): String\r\n}\r\n```\r\n\r\n`search(text: '')` and `search` work, but `search()` fails with\r\n\r\n> Syntax Error: Expected Name, found )\r\n\r\nThis forces client code to specifically look for all parameters being omitted and remove the `()`. It would be nice to not have to do this.",
+              "createdAt": "2019-05-12T22:22:43Z",
+              "author": {
+                "login": "dandv",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/33569?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1860",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Having multiple inputs",
+              "state": "CLOSED",
+              "number": 1890,
+              "body": "# Feature requests\r\nIt would be great if we can have this feature to enable multiple inputs insertion for example :\r\n```\r\ntype Mutation{\r\n  add(input: {typeA, typeB}): output\r\n}\r\n```\r\nThen in our resolver we can do,\r\n```\r\nMutation:{\r\n   add: async(_, arg, ctx) => {\r\n      let author = new Author();\r\n      author.key = arg.typeA.id;\r\n\r\n      let book = new Book();\r\n      book.key = arg.typeB.id;\r\n   }\r\n}\r\n```\r\nIn the playground, for query we can do;\r\n```\r\nmutation($input: input){\r\n addAuthorAndBook(input: $input){\r\n  author{\r\n   key\r\n  }\r\n  book{\r\n    key\r\n  }\r\n }\r\n}\r\n```\r\nFor Variable, we can\r\n```\r\n{\r\n  \"input\"\":{\r\n    \"typeA\":{\r\n      id\r\n    },\r\n   \"typeB\":{\r\n      id\r\n    }\r\n  }\r\n}\r\n```",
+              "createdAt": "2019-05-22T06:05:04Z",
+              "author": {
+                "login": "tonystaark",
+                "avatarUrl": "https://avatars0.githubusercontent.com/u/16837659?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1890",
+              "labels": {
+                "edges": []
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Transforming input fields",
+              "state": "OPEN",
+              "number": 1894,
+              "body": "I find myself short of an easy way to perform reusable transformation on input fields.\r\n\r\nSay there is the following input object:\r\n```ts\r\nexport const AddressInputType = new GraphQLInputObjectType({\r\n    name: 'AddressInput',\r\n    fields: () => ({\r\n        name: {\r\n            type: new GraphQLNonNull(GraphQLString),\r\n        },\r\n    }),\r\n});\r\n```\r\n\r\nI would like to be able to do the following:\r\n\r\n```ts\r\nexport const trim = (source, info) => source[info.fieldName].trim();\r\nexport const toUpperCase = (source, info) => source[info.fieldName].toUpperCase();\r\n\r\nexport const AddressInputType = new GraphQLInputObjectType({\r\n    name: 'AddressInput',\r\n    fields: () => ({\r\n        name: {\r\n            type: new GraphQLNonNull(GraphQLString),\r\n            transform: [\r\n                trim,\r\n                toUpperCase,\r\n            ],\r\n        },\r\n    }),\r\n});\r\n```\r\n\r\nReturning `undefined` from a transform function should remove the field from the source object.\r\n\r\nWhen to transform? I believe the transformation should occur after the type is parsed although arguments can be made to apply the transform before parsing. A potential solution is to have a `transformBefore` and a `transformAfter` property.\r\n\r\nIt should be possible to throw an error in the transform function. This should be handled similar to throwing an error in the type parser.",
+              "createdAt": "2019-05-22T12:15:13Z",
+              "author": {
+                "login": "MatthiasKunnen",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/16807587?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1894",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "needs exploration",
+                      "color": "fbca04"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "[Discussion] Export GraphQL data to a SQL database (postgre)",
+              "state": "CLOSED",
+              "number": 1913,
+              "body": "I wonder if exporting GraphQL data to a SQL database in a real-time (or automated) fashion is something that is being discussed, or possible.\r\n\r\nGraphQL has serious limitations in the spec itself (aggregation, sort, etc.) which _(if I'm correct, and as a beginner in GraphQL, do correct me if I'm wrong)_ make each implementation of those features potentially different.\r\n\r\nI'm mostly asking this because the awesome Metabase (BI and Analytics) doesn't have GraphQL support, it mainly support SQL-based DB, but supporting GraphQL would be very much useful, as it would allow to use a single graphQL endpoint to fetch data from multiple sources, since GraphQL can be used as a sources aggregator.\r\n\r\nWe've had some discussion already about it at https://github.com/metabase/metabase/issues/6297 and the current state of discussion leads to using a third party tool, that would basically create/keep up-to-date a postgre database, based from data fetched from a GraphQL endpoint.\r\n\r\nSo, I wonder if such tool exists, if it's something that's somehow planned, in progress, or impossible. I believe that'd be a great addition to the open source world.",
+              "createdAt": "2019-05-26T22:40:22Z",
+              "author": {
+                "login": "Vadorequest",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/3807458?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1913",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "GraphQL not accepting the Bearer token sent via restassured",
+              "state": "CLOSED",
+              "number": 1925,
+              "body": "Hi, I am trying to test the graphql queries via restassured. When i try to pass bearer token via header, its not accepting the token and gives this error:\r\n\r\n{\"timestamp\":\"2019-05-28T20:47:48.065+0000\",\"status\":403,\"error\":\"Forbidden\",\"message\":\"Invalid Access Token.User Not logged In\")\r\n\r\nHere's my restassured call:\r\n\r\nresponse = given().relaxedHTTPSValidation().header(new Header(\"Authorization\", \"Bearer \" + token))\t             \t\t\t       .contentType(ContentType.JSON).request().body(request).when().post(baseUrl);\r\n\r\nwhat im doing wrong here? Same thing works fine from Postman & Graphiql",
+              "createdAt": "2019-05-28T20:54:32Z",
+              "author": {
+                "login": "veeramanib",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/44859565?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1925",
+              "labels": {
+                "edges": []
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Duplicate graphql modules cannot be used at the same time",
+              "state": "CLOSED",
+              "number": 1951,
+              "body": "We have react relay application which uses react 16.2 and graphql 0.13.1 We are trying to upgrade to latest react to use some of the advance feature and getting above error.\r\n\r\nHere is our dependency and dev dependency look like\r\n\r\n`  \"dependencies\": {\r\n    \"@fullcalendar/daygrid\": \"^4.0.1\",\r\n    \"@fullcalendar/interaction\": \"^4.0.2\",\r\n    \"@fullcalendar/react\": \"^4.0.2-beta\",\r\n    \"@fullcalendar/timegrid\": \"^4.0.1\",\r\n    \"axios\": \"^0.18.0\",\r\n    \"babel-plugin-relay\": \"^1.7.0\",\r\n    \"babel-polyfill\": \"^6.26.0\",\r\n    \"draft-js\": \"^0.10.5\",\r\n    \"draft-js-export-html\": \"^1.2.0\",\r\n    \"draft-js-import-html\": \"^1.2.1\",\r\n    \"express\": \"^4.16.2\",\r\n    \"farce\": \"^0.2.3\",\r\n    \"found\": \"^0.3.5\",\r\n    \"found-relay\": \"^0.3.1\",\r\n    \"found-scroll\": \"^0.1.4\",\r\n    \"graphql\": \"^14.3.1\",\r\n    \"isomorphic-fetch\": \"^2.2.1\",\r\n    \"jsonexport\": \"^2.0.11\",\r\n    \"lodash\": \"^4.17.5\",\r\n    \"moment\": \"^2.24.0\",\r\n    \"moment-range\": \"^4.0.2\",\r\n    \"nodemon\": \"^1.12.1\",\r\n    \"papaparse\": \"^4.6.2\",\r\n    \"prop-types\": \"^15.6.0\",\r\n    \"react\": \"^16.8.6\",\r\n    \"react-big-calendar\": \"^0.20.3\",\r\n    \"react-daterange-picker\": \"^2.0.1\",\r\n    \"react-dom\": \"^16.8.6\",\r\n    \"react-draft-wysiwyg\": \"^1.12.13\",\r\n    \"react-relay\": \"^1.7.0\",\r\n    \"relay-compiler\": \"^1.7.0\",\r\n    \"relay-compiler-webpack-plugin\": \"^1.0.4\",\r\n    \"sanitize-html\": \"^1.19.1\",\r\n    \"semantic-ui-css\": \"^2.2.12\",\r\n    \"semantic-ui-react\": \"^0.77.2\",\r\n    \"snyk\": \"^1.52.0\",\r\n    \"sync-request\": \"^4.1.0\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"babel-cli\": \"^6.26.0\",\r\n    \"babel-eslint\": \"^8.0.2\",\r\n    \"babel-loader\": \"^7.1.2\",\r\n    \"babel-preset-env\": \"^1.6.1\",\r\n    \"babel-preset-react\": \"^6.24.1\",\r\n    \"babel-preset-stage-0\": \"^6.24.1\",\r\n    \"concurrently\": \"^3.5.1\",\r\n    \"css-loader\": \"^0.28.7\",\r\n    \"dotenv\": \"^4.0.0\",\r\n    \"eslint\": \"^4.12.0\",\r\n    \"eslint-plugin-react\": \"^7.5.1\",\r\n    \"extract-text-webpack-plugin\": \"^3.0.1\",\r\n    \"file-loader\": \"^1.1.5\",\r\n    \"html-loader\": \"^0.5.1\",\r\n    \"html-webpack-plugin\": \"^2.30.1\",\r\n    \"node-sass\": \"^4.12.0\",\r\n    \"sass-loader\": \"^6.0.6\",\r\n    \"style-loader\": \"^0.19.0\",\r\n    \"url-loader\": \"^0.6.2\",\r\n    \"webpack\": \"^3.8.1\",\r\n    \"webpack-dev-server\": \"^2.9.5\"\r\n  }`\r\n\r\nWhen try to compile project, it compile successfully but hitting application gives following error\r\n\r\nModule not found: Error: Cannot use GraphQLSchema \"[object Object]\" from another module or realm.\r\n\r\nEnsure that there is only one instance of \"graphql\" in the node_modules\r\ndirectory. If different versions of \"graphql\" are the dependencies of other\r\nrelied on modules, use \"resolutions\" to ensure only one version is installed.\r\n\r\nhttps://yarnpkg.com/en/docs/selective-version-resolutions\r\n\r\nDuplicate \"graphql\" modules cannot be used at the same time since different\r\nversions may have different capabilities and behavior. The data from one\r\nversion used in the function from another could produce confusing and\r\nspurious results.\r\n @ ./src/pages/RecommendationEngine/RecommendationEngineContainer.js 859:15-86 865:11-82\r\n @ ./src/lib/routes.js\r\n @ ./src/lib/farceRouter.js\r\n @ ./src/browser.js\r\n @ multi (webpack)-dev-server/client?\r\n\r\nThanks in advance ",
+              "createdAt": "2019-06-05T14:28:53Z",
+              "author": {
+                "login": "jatinvmehta",
+                "avatarUrl": "https://avatars1.githubusercontent.com/u/16778827?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1951",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Data from Oracle is Returning Null",
+              "state": "OPEN",
+              "number": 1954,
+              "body": "Trying to read the data from Oracle Database using node-oracledb\r\nBut when trying to read the data, I am always getting a NULL Value unless the type in the Oracle Database is JSON. \r\n\r\nWhen using traditional datatypes from Oracle (String, Number) the data doesn't seem to be processed and always shows a null value.\r\n\r\nSubmitted the Post in [Stack Overflow ](https://stackoverflow.com/questions/56487198/data-from-oracle-is-returning-as-null-in-graphql) as well. \r\n\r\n``` \r\nconst graphql = require(\"graphql\");\r\nconst oracledb = require(\"oracledb\");\r\nconst {\r\n  GraphQLObjectType,\r\n  GraphQLString,\r\n  GraphQLInt,\r\n  GraphQLSchema,\r\n  GraphQLID,\r\n  GraphQLList\r\n} = graphql;\r\n\r\nasync function getAllClientsHelper() {\r\n  let sql = \"SELECT p.user_id as id, p.org_nm as orgnm FROM hr.userdetails p\";\r\n  let conn = await oracledb.getConnection();\r\n  let result = await conn.execute(sql);\r\n  await conn.close();\r\n  let j = [];\r\n  for (let r of result.rows) {\r\n    j.push(r);\r\n  }\r\n  return j;\r\n}\r\n\r\nasync function getOneClientHelper(id) {\r\n  let sql =\r\n    \"SELECT p.user_id as id, p.org_nm as orgnm FROM hr.userdetails p where hr.user_id = :id\";\r\n  let binds = [id];\r\n  let conn = await oracledb.getConnection();\r\n  let result = await conn.execute(sql, binds);\r\n  await conn.close();\r\n  return result.rows;\r\n}\r\n\r\nconst ClientType = new GraphQLObjectType({\r\n  name: \"Client\",\r\n  fields: () => ({\r\n    id: { type: GraphQLID },\r\n    orgnm: { type: GraphQLString }\r\n  })\r\n});\r\n\r\nconst RootQuery = new GraphQLObjectType({\r\n  name: \"RootQueryType\",\r\n  fields: {\r\n    client: {\r\n      type: ClientType,\r\n      args: { id: { type: GraphQLID } },\r\n      resolve(parent, args) {\r\n        // code to get the data from databse / source\r\n        return getOneClientHelper(args.id);\r\n      }\r\n    },\r\n    clients: {\r\n      type: new GraphQLList(ClientType),\r\n      resolve(parent, args) {\r\n        return getAllClientsHelper();\r\n      }\r\n    }\r\n  }\r\n});\r\n\r\nmodule.exports = new GraphQLSchema({\r\n  query: RootQuery\r\n});\r\n\r\n```\r\n\r\n\r\n",
+              "createdAt": "2019-06-07T02:22:35Z",
+              "author": {
+                "login": "noodlemind",
+                "avatarUrl": "https://avatars1.githubusercontent.com/u/11191273?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1954",
+              "labels": {
+                "edges": []
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Typescript error when creating scalar type",
+              "state": "CLOSED",
+              "number": 1958,
+              "body": "When creating a `GraphQLScalarType` in my schema I am getting a typescript error. Here is a simplified example of my code.\r\n\r\n```ts\r\nexport default {\r\n  MyScalar: new GraphQLScalarType({\r\n    ...\r\n    parseLiteral(ast) {\r\n      return ast.value;\r\n    }\r\n  })\r\n}\r\n```\r\n\r\nThe error message is\r\n\r\n```\r\nProperty 'value' does not exist on type 'VariableNode | IntValueNode | FloatValueNode | BooleanValueNode | NullValueNode | EnumValueNode | ListValueNode | ObjectValueNode'\r\n```\r\n\r\nAny help is appreciated!",
+              "createdAt": "2019-06-07T13:10:32Z",
+              "author": {
+                "login": "joeytepp",
+                "avatarUrl": "https://avatars1.githubusercontent.com/u/11237799?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1958",
+              "labels": {
+                "edges": []
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "how can I use typeFromAST",
+              "state": "CLOSED",
+              "number": 1967,
+              "body": "how can I use typeFromAST , it need two parameters , first is schema , and second is NamedTypeNode ,\r\n\r\nwhat can I make the second parameter , what is NamedTypeNode if I only have a string of graphql language",
+              "createdAt": "2019-06-11T07:57:40Z",
+              "author": {
+                "login": "githbq",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/10009709?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1967",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "buildClientSchema fails when converting apollo introspection json",
+              "state": "CLOSED",
+              "number": 1970,
+              "body": "BUG/FIX\r\n\r\nHi I am using a vscode plugin to do graphql autocompletes https://marketplace.visualstudio.com/items?itemName=kumar-harsh.graphql-for-vscode\r\n\r\nIt requires a gql file so I use grahpql-tools https://www.npmjs.com/package/gql-tools?activeTab=readme. \r\n\r\nI download the json scheme \r\ngqlschema http://example.com/graphql -i\r\n\r\nThen I convert it to the gql using this library\r\nin a script I call gql-json-to-sdl.js\r\nwith the following\r\n```javascript\r\nconst { buildClientSchema, printSchema } = require(\"graphql\");\r\nconst fs = require(\"fs\");\r\n\r\nconst introspectionSchemaResult = JSON.parse(fs.readFileSync(\"graphql_schema.json\"));\r\nconst graphqlSchemaObj = buildClientSchema(introspectionSchemaResult);\r\nfs.writeFileSync('graphql_schema.gql', printSchema(graphqlSchemaObj));\r\n```\r\n\r\nI get the following stack trace\r\n\r\nTypeError: Cannot read property 'types' of undefined\r\n    at buildClientSchema (.../node_modules/graphql/utilities/buildClientSchema.js:57:61)\r\n    at Object.<anonymous> (.../gql-json-to-sdl.js:5:26)\r\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\r\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\r\n    at Module.load (internal/modules/cjs/loader.js:599:32)\r\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\r\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\r\n    at Function.Module.runMain (internal/modules/cjs/loader.js:742:12)\r\n    at startup (internal/bootstrap/node.js:283:19)\r\n    at bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)\r\n\r\nIf I change the following https://github.com/graphql/graphql-js/blob/master/src/utilities/buildClientSchema.js#L76\r\n\r\nto \r\n```javascript\r\nvar schemaIntrospection = introspection.__schema || introspection.data.__schema;\r\n```\r\n\r\nit works wondering if that change is a valid fix for this repo or just a one\r\noff solution for my own situation\r\n",
+              "createdAt": "2019-06-11T13:50:56Z",
+              "author": {
+                "login": "tjtaill",
+                "avatarUrl": "https://avatars1.githubusercontent.com/u/5682701?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1970",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Allow to specify field type as a string",
+              "state": "OPEN",
+              "number": 1979,
+              "body": "## Currently\r\n\r\ngraphql.js expects `type` option to be an instance of GraphQLType (`GraphQLInputObjectType`, `GraphQLObjectType`, etc).\r\nExample:\r\n\r\n```js\r\nconst AnotherType = new GraphQLObjectType({ ... })\r\nconst Type = new GraphQLObjectType({\r\n  name: 'MyType',\r\n  fields: {\r\n    anotherType: { type: AnotherType }\r\n  }\r\n})\r\n```\r\n\r\n## Desired\r\n\r\nIn order to split application into modules (which may have circular references in GraphQL types) it'd be helpful to be able to specify `type` parameter in fields as a string. Updated example:\r\n\r\n```js\r\nconst Type = new GraphQLObjectType({\r\n  name: 'MyType',\r\n  fields: {\r\n    anotherType: { type: 'AnotherType' } // AnotherType is referenced by its name\r\n  }\r\n})\r\n```\r\n\r\n## Workaround\r\n\r\nCurrently when nodejs modules have circular reference, I can use ugly workaround: calling `require` in `fields` thunk:\r\n\r\n```js\r\nconst Type = new GraphQLObjectType({\r\n  name: 'MyType',\r\n  fields: () => ({\r\n    anotherType: { type: require('anotherModule').AnotherType } \r\n  })\r\n})\r\n```\r\n\r\n## Implementation details\r\n\r\nWe can add a restriction, that types which a referenced by their name must be included in `types` option of `GraphQLSchema` constructor:\r\n\r\n```js\r\nconst schema = new GraphQLSchema({\r\n  types: [/* specify types that were referenced by their name */],\r\n  query: ...,\r\n  mutation: ...\r\n  subscription: ...\r\n})\r\n```\r\n\r\nSo, then the flow is this:\r\n1. Walk over `types` array, add them into `typeMap`\r\n2. Walk over `Query`, `Mutation`, `Subscription` recursively and resolve types",
+              "createdAt": "2019-06-13T10:27:50Z",
+              "author": {
+                "login": "stalniy",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/1159966?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1979",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "needs exploration",
+                      "color": "fbca04"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "object validation creates misleading non null error",
+              "state": "OPEN",
+              "number": 1989,
+              "body": "# What is happening\r\nA non null error is reported for a field that is not null, e.g.\r\n`Cannot return null for non-nullable field Account.id.`\r\n\r\n# What is really happening\r\nWhen you dig into graphql code and start console.logging intermediate results, you start seeing very different things:\r\n\r\nScenario 1\r\n`Expected a value of type \"PostRegistration\" but received: \"TERMS\"`\r\n\r\nSo, in this case, I had added a value to an ENUM field in the database but forgot to add it to the graphql enum, hence the error. Impossible to determine from the provided error message (`cannot return null ...`).\r\n\r\nScenario 2\r\n`non nullable field Account.foo was null`\r\n\r\nIn this case, another required key on the same object was provided with a null value. It seems obvious, but the error message is so specific, that you can easily miss this.\r\n\r\nIn short, a whole class of field validation errors, is being aggregated to a single highly specific message that is plain wrong. ",
+              "createdAt": "2019-06-24T17:37:06Z",
+              "author": {
+                "login": "mschipperheyn",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/384959?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1989",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "bug",
+                      "color": "fc2929"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "GraphQLEnumType doesn't work if value doesnt match the key",
+              "state": "CLOSED",
+              "number": 1997,
+              "body": "Experiencing this in both **14.4.0** and **14.3.1** with `apollo-server-express@2.6.2`\r\n\r\nI have a simple query:\r\n\r\n```\r\nconst LanguageCode = new GraphQLEnumType({\r\n  name: 'LanguageCode',\r\n  values: {\r\n    en: {\r\n      value: 'english'\r\n    },\r\n    fr: {\r\n      value: 'french'\r\n    }\r\n  }\r\n})\r\n\r\nexport default {\r\n  type: ListResultInterface(SchoolCompanyPromotionObject),\r\n  args: {\r\n    languageCode: {\r\n      type: LanguageCode\r\n    }\r\n  },\r\n  resolve\r\n}\r\n```\r\n\r\nHowever, when I try to access this query...\r\n\r\n```\r\nquery {\r\n  myQuery(languageCode: en) {\r\n    # ...fields\r\n  }\r\n}\r\n```\r\n\r\nI receive the following error: `\"Variable \\\"$_v1_languageCode\\\" got invalid value \\\"english\\\"; Expected type LanguageCode.\"`\r\n\r\nHowever, if I map the value to be the same as the key (`en: {value: 'en'}`) then the query works. ",
+              "createdAt": "2019-06-27T02:36:55Z",
+              "author": {
+                "login": "stringbeans",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/1228699?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/1997",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Outstanding breaking changes in buildClientSchema",
+              "state": "OPEN",
+              "number": 2005,
+              "body": "This issue is a follow-up to an ongoing problem with breaking changes in `buildClientSchema`.\r\n\r\n## A breakdown of events\r\n* `v<14.2.0`: `buildClientSchema` pulls in only the built-in scalar types that are referenced within the schema.\r\n* `v14.2.0`: `buildClientSchema` doesn't pull in _any_ built-in scalar types. (original breaking change)\r\n* `v14.2.1-14.3.0`: `buildClientSchema` pulls in _all_ of the built-in scalar types, whether they're referenced within the schema or not. The fix addressed one issue, but introduced another and added unintended behavior.\r\n* `14.3.1-14.4.1` (latest): `buildClientSchema` doesn't add any built-in scalars, meaning the schema must be provided complete. We previously depended on pre-14.2.0 behavior, this is a break that we could only work around by pulling in the missing scalars ourselves before calling `buildClientSchema`.\r\n\r\n## History and related links\r\n* #1677 - (introduced breaking change)\r\n* #1808 - attempt to correct breaking change, but introduced new behavior\r\n* #1809 - undoes previous behavior, but doesn't pull in missing scalars as before\r\n* Lots of discussion around the issue: https://github.com/graphql/graphql-js/commit/183ff32bee4bc23eb23657f79f414c2400ecb06a#r32971387\r\n* https://github.com/apollographql/apollo-tooling/pull/1355\r\n\r\n## Reproduction\r\nhttps://github.com/trevor-scheer/buildClientSchema-changes\r\n\r\nInstall and run\r\n```\r\nyarn\r\nnode index.js\r\n```\r\n\r\nThe included schema for demonstration intentionally leaves out all built-in types in order to show how behavior changed over time. There is a field in the schema which depends on the `Int` type.",
+              "createdAt": "2019-06-28T23:32:05Z",
+              "author": {
+                "login": "trevor-scheer",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/29644393?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2005",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "undefined is not a function in nodejsCustomInspectSymbol",
+              "state": "CLOSED",
+              "number": 2007,
+              "body": "is it feasible to add another check, `typeof Symbol.for === 'function'` to nodejsCustomInspectSymbol?\r\n\r\nwe get some cases of `TypeError: undefined is not a function` originating from https://github.com/graphql/graphql-js/blob/master/src/jsutils/nodejsCustomInspectSymbol.js#L5\r\n\r\nin other words: there are cases were `Symbol` is a `function`, but `Symbol.for` is `undefined` :~(\r\n\r\nunfortunately i have no idea how this can happen and no idea how to reproduce. we use core-js and no other polyfills.\r\n\r\ninterestingly, the bug only occurs exclusively in a few user agents:\r\n\r\n- Chrome 74.0.3729.169 \r\n- Chrome 74.0.3729.157\r\n- Samsung Browser 9.2\r\n\r\nif you don't want to add another check, i'll investigate further. this *might* be a bug or conflict related to core-js...",
+              "createdAt": "2019-07-02T15:31:21Z",
+              "author": {
+                "login": "jaynetics",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/10758879?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2007",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "needs exploration",
+                      "color": "fbca04"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Why is GraphQLObjectType not a constructor? ",
+              "state": "CLOSED",
+              "number": 2012,
+              "body": "Is my code even valid??? Because the terminal says that GraphQLObjectType is not a constructor. What in the world just happened??? \r\n\r\nmy code: \r\n<img width=\"727\" alt=\"Screen Shot 2019-07-04 at 10 32 48 AM\" src=\"https://user-images.githubusercontent.com/34760070/60635946-24df6e80-9e47-11e9-99df-f38af7288932.png\">\r\n\r\nerror: \r\n<img width=\"760\" alt=\"Screen Shot 2019-07-04 at 10 34 23 AM\" src=\"https://user-images.githubusercontent.com/34760070/60636003-5ce6b180-9e47-11e9-94cc-3a0699db0436.png\">\r\n\r\n_**can anybody tell me how to solve this ↑↑↑↑?**_",
+              "createdAt": "2019-07-04T02:39:22Z",
+              "author": {
+                "login": "boblamceo",
+                "avatarUrl": "https://avatars1.githubusercontent.com/u/34760070?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2012",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Accepting BigInt type casts",
+              "state": "CLOSED",
+              "number": 2017,
+              "body": "There are several issues opened regarding BigInt, none of them actually fixes the issue.\r\n\r\nIf maintainers do not want to create a new type like GraphQLBigInt, at least could be added support for custom type cast.\r\n\r\nExample:\r\n```\r\nconst { GraphQLScalarType } = require('graphql');\r\nconst { INT } = require ('graphql/language/kinds');\r\n\r\nconst MAX_INT = Number.MAX_SAFE_INTEGER;\r\nconst MIN_INT = Number.MIN_SAFE_INTEGER;\r\n\r\nconst coerceBigint = value => {\r\n  if (value === '') {\r\n    throw new TypeError(\r\n      'Bigint cannot represent non 64-bit signed integer value: (empty string)',\r\n    );\r\n  }\r\n  const num = BigInt(value);\r\n  if (num > MAX_INT || num < MIN_INT) {\r\n    throw new TypeError(\r\n      `Bigint cannot represent non 64-bit signed integer value: ${String(\r\n        value,\r\n      )}`,\r\n    );\r\n  }\r\n  return num;\r\n};\r\n\r\nconst GraphQLBigInt = new GraphQLScalarType({\r\n  name: 'BigInt',\r\n  description:\r\n    'The `Bigint` scalar type 64 bit',\r\n  serialize: coerceBigint,\r\n  parseValue: coerceBigint,\r\n  parseLiteral(ast) {\r\n    if (ast.kind === INT) {\r\n      const num = BigInt(ast.value);\r\n      if (num <= MAX_INT && num >= MIN_INT) {\r\n        return num;\r\n      }\r\n    }\r\n    return null;\r\n  },\r\n});\r\n\r\nexports.GraphQLBigInt = GraphQLBigInt;\r\n```\r\n\r\ngives me the error: \r\n```\r\nError: Schema must contain uniquely named types but contains multiple types named \"BigInt\"\r\n```\r\n\r\nSo, technically the only way is to convert to String, which will not work for many cases.\r\n\r\nCan we just suppress the error above, which will allow actually to use the BigInt?",
+              "createdAt": "2019-07-05T20:45:51Z",
+              "author": {
+                "login": "Kostanos",
+                "avatarUrl": "https://avatars1.githubusercontent.com/u/1136702?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2017",
+              "labels": {
+                "edges": []
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Custom error obejct properties are not propagated to `originalError` from a rejected promise",
+              "state": "CLOSED",
+              "number": 2018,
+              "body": "In https://github.com/graphql/graphql-js/issues/251, we added `originalError` to be able to look at the original error object and read stuff from it.\r\n\r\nGreat! Inside of `formatError`, I want to be able to see a custom property on the original error object.\r\n\r\n### works (regular synchronous `Error`):\r\n\r\n```js\r\nconst resolvers = {\r\n  foo: () => {\r\n    try {\r\n      throw new Error('yikes!');\r\n    } catch (e) {\r\n      e.foo = \"bar\";\r\n      throw e;\r\n    }\r\n  }\r\n};\r\n\r\nformatError: e => {\r\n  console.log(\"originalError\", e.originalError.foo); // logs 'bar'\r\n  return e;\r\n}\r\n```\r\n\r\n\r\n\r\n### does _not_ work (async `Promise.reject`):\r\n\r\n```js\r\nconst resolvers = {\r\n  foo: async () => {\r\n    try {\r\n      await Promise.reject(\"yikes!\");\r\n    } catch (e) {\r\n      e.foo = \"bar\";\r\n      throw e;\r\n    }\r\n  }\r\n};\r\n\r\nformatError: e => {\r\n  console.log(\"originalError\", e.originalError.foo); // logs 'undefined'\r\n  return e;\r\n}\r\n```\r\n\r\n**Repro**: https://codesandbox.io/embed/nodejs-graphql-server-xo0vh\r\n\r\nNot sure if this is intended, or if this is to do with there being some difference between an error object and a rejected promise, but we seem to treat rejected promises and synchronous errors the same elsewhere 🤔 \r\n\r\nThoughts?\r\n\r\nThanks!!",
+              "createdAt": "2019-07-05T22:40:35Z",
+              "author": {
+                "login": "magicmark",
+                "avatarUrl": "https://avatars1.githubusercontent.com/u/1590756?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2018",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Allow schemaPrinter to be customized / extended.",
+              "state": "OPEN",
+              "number": 2020,
+              "body": "Some libraries are having to copy the schemaPrinter code to do custom stuff to the output, (`@apollo/federation`, `type-graphql`).  These libraries require outputting type and field level directives since this isn't supported in this library.  Is there any support to do so, or can the schemPrinter just export the other functions so we don't have to copy every function or, even better, create a SchemaPrinter class so everything can be over-ridden, then `printSchema` options can set the printer for BC:\r\n\r\n```javascript\r\n\r\ntype Options = {\r\n    commentDescriptions?: boolean,\r\n    printer?: SchemaPrinter\r\n};\r\n\r\nconst defaultPrinter = new SchemaPrinter();\r\n\r\nexport function printSchema(schema: GraphQLSchema, options?: Options): string {\r\n    const printer = options.printer || defaultPrinter;\r\n\r\n    return printer.print(\r\n        schema,\r\n        n => !isSpecifiedDirective(n),\r\n        isDefinedType,\r\n        options,\r\n    );\r\n}\r\n\r\nexport function printIntrospectionSchema(\r\n    schema: GraphQLSchema,\r\n    options?: Options,\r\n): string {\r\n    const printer = options.printer || defaultPrinter;\r\n\r\n    return printer.print(\r\n        schema,\r\n        isSpecifiedDirective,\r\n        isIntrospectionType,\r\n        options,\r\n    );\r\n}\r\n```",
+              "createdAt": "2019-07-08T18:23:13Z",
+              "author": {
+                "login": "j",
+                "avatarUrl": "https://avatars2.githubusercontent.com/u/589410?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2020",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "enhancement",
+                      "color": "84b6eb"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Build resolveInfo manually",
+              "state": "CLOSED",
+              "number": 2029,
+              "body": "Hello! How can i build GraphQLResolveInfo manually from query?\r\nI need it mock for unit tests\r\nPlease help me. I will direct very much thanks for you :)",
+              "createdAt": "2019-07-11T14:10:46Z",
+              "author": {
+                "login": "marusapur",
+                "avatarUrl": "https://avatars1.githubusercontent.com/u/31284223?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2029",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Order fields in the \"type Query\" alphabetically",
+              "state": "CLOSED",
+              "number": 2036,
+              "body": "Is it possible to sort the fields in the `type Query` alphabetically? At the moment they are not sorted and then they are also unsorted in the Prisma Playground Docs.\r\n\r\nThis is my current generated `type Query` from the schema:\r\n\r\n```graphql\r\ntype Query {\r\n  area(id: String!): AreaModel!\r\n  areas(filter: AreasFilterInput): [AreaModel!]!\r\n  room(id: String!): RoomModel!\r\n  rooms(orderBy: RoomsOrderByInput = ASC): [RoomModel!]!\r\n  session(id: String!): SessionModel!\r\n  sessions: [SessionModel!]!\r\n  topic(id: String!): TopicModel!\r\n  topics: [TopicModel!]!\r\n  timeframe(id: String!): Timeframe!`\r\n  timeframes(withoutGaps: Boolean = true): [Timeframe!]!\r\n  partner(id: String!): PartnerModel!\r\n  partners: [PartnerModel!]!\r\n  booth(id: String!): BoothModel!\r\n  booths: [BoothModel!]!\r\n  speaker(id: String!): Speaker!\r\n  speakers: [Speaker!]!\r\n}\r\n```\r\n\r\nAnd the Docs in Prisma Playground looks like this:\r\n\r\n![image](https://user-images.githubusercontent.com/26099903/61176171-592bfb00-a5bc-11e9-90f5-1aff9bbcd4aa.png)\r\n\r\nI would like to have the `type Query` to be sorted like this:\r\n\r\n```graphql\r\ntype Query {\r\n  area(id: String!): AreaModel!\r\n  areas(filter: AreasFilterInput): [AreaModel!]!\r\n  booth(id: String!): BoothModel!\r\n  booths: [BoothModel!]!\r\n  partner(id: String!): PartnerModel!\r\n  partners: [PartnerModel!]!\r\n  room(id: String!): RoomModel!\r\n  rooms(orderBy: RoomsOrderByInput = ASC): [RoomModel!]!\r\n  session(id: String!): SessionModel!\r\n  sessions: [SessionModel!]!\r\n  speaker(id: String!): Speaker!\r\n  speakers: [Speaker!]!\r\n  timeframe(id: String!): Timeframe!\r\n  timeframes(withoutGaps: Boolean = true): [Timeframe!]!\r\n  topic(id: String!): TopicModel!\r\n  topics: [TopicModel!]!\r\n}\r\n```",
+              "createdAt": "2019-07-13T20:25:57Z",
+              "author": {
+                "login": "websolutions-hamburg",
+                "avatarUrl": "https://avatars3.githubusercontent.com/u/26099903?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2036",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "question",
+                      "color": "cc317c"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Graphql missing module PrintError",
+              "state": "CLOSED",
+              "number": 2038,
+              "body": "I have been using graphql without any issues for last few months. Today, I did npm update and I started getting the following error:\r\n`**Unable to resolve \"./printError\" from \"node_modules/graphql/error/index.js\"**`\r\nAny ideas how to resolve this issue?\r\nMy package.json is as follows:\r\n```json\r\n{\r\n  \"name\": \"xyz\",\r\n  \"version\": \"0.0.0\",\r\n  \"description\": \"No description\",\r\n  \"author\": null,\r\n  \"private\": true,\r\n  \"main\": \"node_modules/expo/AppEntry.js\",\r\n  \"dependencies\": {\r\n    \"apollo-cache-inmemory\": \"^1.5.1\",\r\n    \"apollo-client\": \"^2.5.1\",\r\n    \"apollo-link-http\": \"^1.5.14\",\r\n    \"appcenter\": \"1.13.0\",\r\n    \"appcenter-analytics\": \"1.13.0\",\r\n    \"appcenter-crashes\": \"1.13.0\",\r\n    \"aws-amplify\": \"^1.1.23\",\r\n    \"aws-amplify-react-native\": \"^2.1.8\",\r\n    \"aws-appsync\": \"^1.7.2\",\r\n    \"aws-appsync-react\": \"^1.2.7\",\r\n    \"expo\": \"^32.0.0\",\r\n    \"graphql\": \"^14.4.2\",\r\n    \"graphql-tag\": \"^2.10.1\",\r\n    \"react\": \"16.5.0\",\r\n    \"react-apollo\": \"^2.5.4\",\r\n    \"react-native\": \"https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz\",\r\n    \"react-native-datepicker\": \"1.7.2\",\r\n    \"react-native-dropdown\": \"0.0.6\",\r\n    \"react-native-elements\": \"1.1.0\",\r\n    \"react-native-form-validator\": \"0.2.0\",\r\n    \"react-native-material-dropdown\": \"0.11.1\",\r\n    \"react-native-modal-dropdown\": \"0.6.2\",\r\n    \"react-native-panel\": \"1.0.4\",\r\n    \"react-native-paper\": \"2.2.8\",\r\n    \"react-native-picker-select\": \"5.1.0\",\r\n    \"react-native-segmented-control-tab\": \"3.4.0\",\r\n    \"react-navigation\": \"3.3.2\",\r\n    \"tcomb-form-native\": \"^0.6.11\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@babel/preset-env\": \"^7.4.2\"\r\n  }\r\n}\r\n```",
+              "createdAt": "2019-07-14T01:56:24Z",
+              "author": {
+                "login": "kfiras",
+                "avatarUrl": "https://avatars0.githubusercontent.com/u/5852246?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2038",
+              "labels": {
+                "edges": []
+              }
+            }
+          },
+          {
+            "node": {
+              "title": "Union Type Problem",
+              "state": "OPEN",
+              "number": 2041,
+              "body": "Hi Guys, I have a question.\r\n\r\nI have a union field type:\r\n\r\ndefined here:\r\n\r\n`\r\nunion FloorType = IntBox | StringBox\r\n`\r\n\r\nAlso I have the two types:\r\n\r\n```\r\ntype IntBox {\r\n  value: Int\r\n}\r\n\r\ntype StringBox {\r\n  field: String\r\n}\r\n```\r\n\r\nAnd then finally in the resolver I have the code to resolve the type:\r\n\r\n```\r\nconst resolvers: IResolvers = {\r\n  IntBox: {\r\n    __isTypeOf(numberField: number) {\r\n      console.log('number is', numberField);\r\n      const newObj = {};\r\n      newObj['value'] = numberField;\r\n      return newObj;\r\n    },\r\n  },\r\n  StringBox: {\r\n    __isTypeOf(object: 'string') {\r\n      const newObj = {};\r\n      newObj['field'] = object;\r\n      return newObj;\r\n    },\r\n  },\r\n  FloorType: {\r\n    __resolveType(obj: any) {\r\n      if (typeof obj === 'string') {\r\n        return 'StringBox';\r\n      }\r\n\r\n      if (typeof obj === 'number') {\r\n        return 'IntBox';\r\n      }\r\n    },\r\n  },\r\n};\r\n```\r\n\r\n\r\nHowever when I make the query:\r\n\r\n`  aparts(page:1, newest: false, limit: 2) {\r\n   name\r\n    price\r\n    currency\r\n    squares\r\n    floor {\r\n      __typename\r\n      ... on StringBox {field}\r\n      ... on IntBox { value }\r\n    }\r\n    created\r\n    link\r\n    _id\r\n  }\r\n`\r\n\r\nI receive the following input:\r\n\r\n` \r\n\"floor\": {\r\n          \"__typename\": \"IntBox\",\r\n          \"value\": null\r\n        },\r\n`\r\n\r\nAnd it should be for instance\r\n\r\n` floor: {\r\n    value: 4\r\n}\r\n`\r\n\r\nCan you give any advise how to receive correct value?\r\n\r\nMy data looks like this:\r\n\r\n```\r\n{\r\n\"_id\": \"5d30231107766daaa23253bd\",\r\n\"name\": \"Name 123\",\r\n\"currency\": \"EUR\",\r\n\"price\": 649,\r\n\"city\": \"Sofia\",\r\n\"district\": \"Geo Milev\",\r\n\"type\": \"1-Bedroom\",\r\n\"firstOrLast\": true,\r\n\"floor\": 1,\r\n\"totalFloors\": 4,\r\n\"squares\": 65,\r\n\"created\": \"2019-07-18T10:43:13.313Z\"\r\n},\r\n```\r\n\r\n_Originally posted by @KostaProsenikov in https://github.com/graphql/graphql-spec/issues/236#issuecomment-513184014_",
+              "createdAt": "2019-07-19T10:49:09Z",
+              "author": {
+                "login": "KostaProsenikov",
+                "avatarUrl": "https://avatars1.githubusercontent.com/u/37612229?v=4"
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "url": "https://github.com/graphql/graphql-js/issues/2041",
+              "labels": {
+                "edges": []
               }
             }
           }
