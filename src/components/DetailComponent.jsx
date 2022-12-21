@@ -42,7 +42,7 @@ export class DetailComponent extends React.Component {
                     </div>
                     <div className="col-10 issue-description" style={{ overflowY: 'scroll', height: '100%' }}>
                         <h4>Description</h4>
-                        <ReactMarkDown source={dataItem.node.body} />
+                        <ReactMarkDown children={dataItem.node.body} />
                     </div>
                 </div>
             </div>
