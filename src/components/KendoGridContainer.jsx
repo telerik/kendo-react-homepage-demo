@@ -1,5 +1,5 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { Query } from '@apollo/client/react/components';
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
 import { process } from '@progress/kendo-data-query';
 import { ColumnMenu } from './ColumnMenu';

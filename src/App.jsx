@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { ApolloProvider } from "react-apollo";
-import ApolloClient from "apollo-boost";
+import {ApolloProvider, ApolloClient} from "@apollo/client";
 import { KendoGridContainer } from "./components/KendoGridContainer";
 import { TabStrip, TabStripTab } from '@progress/kendo-react-layout';
 

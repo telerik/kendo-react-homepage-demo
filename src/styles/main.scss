@@ -1,5 +1,6 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/maps";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/grid";
@@ -18,7 +19,7 @@ body {
 }
 
 .img-circle {
-  border: 1px solid $accent;
+  border: 1px solid $primary;
   border-radius: 2rem;
   margin-right: 0.5rem;
 }
@@ -73,7 +74,7 @@ div[role="tabpanel"] > div {
 .demo-heading {
   // position: absolute;
   font-family: "Metric";
-  color: $accent;
+  color: $primary;
   display: flex;
   position: absolute;
   left: 1rem;
