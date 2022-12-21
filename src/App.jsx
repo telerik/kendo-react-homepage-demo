@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import {ApolloProvider, ApolloClient} from "@apollo/client";
 import { KendoGridContainer } from "./components/KendoGridContainer";
 import { TabStrip, TabStripTab } from '@progress/kendo-react-layout';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
+  cache: new InMemoryCache(),
   uri: "https://api.github.com/graphql",
   request: operation => {
     operation.setContext({

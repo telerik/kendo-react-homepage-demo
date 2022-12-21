@@ -110,7 +110,7 @@ export class KendoGridContainer extends React.Component {
                                     sortable
                                     pageable
                                     {...this.state}
-                                    onDataStateChange={(e) => { this.setState(e.data); }}
+                                    onDataStateChange={(e) => { this.setState(e.dataState); }}
                                     expandField="expanded"
                                     onExpandChange={this.expandChange}
                                     style={{ height: '100%', overflow: 'auto', paddingBottom: 57 }}
