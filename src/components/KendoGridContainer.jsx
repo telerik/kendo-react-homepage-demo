@@ -1,5 +1,5 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { Query } from '@apollo/client/react/components';
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
 import { process } from '@progress/kendo-data-query';
 import { ColumnMenu } from './ColumnMenu';
@@ -110,7 +110,7 @@ export class KendoGridContainer extends React.Component {
                                     sortable
                                     pageable
                                     {...this.state}
-                                    onDataStateChange={(e) => { this.setState(e.data); }}
+                                    onDataStateChange={(e) => { this.setState(e.dataState); }}
                                     expandField="expanded"
                                     onExpandChange={this.expandChange}
                                     style={{ height: '100%', overflow: 'auto', paddingBottom: 57 }}
