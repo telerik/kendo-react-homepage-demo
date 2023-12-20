@@ -1,14 +1,12 @@
+@import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/maps";
-@import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/grid";
 
-@import "~@progress/kendo-theme-material/scss/variables";
-@import "~@progress/kendo-theme-material/scss/dataviz";
-@import "~@progress/kendo-theme-material/scss/tabstrip";
-@import "~@progress/kendo-theme-material/scss/grid";
+
+@import "~@progress/kendo-theme-material/dist/all.scss";
 
 @import "./fonts.scss";
 
